@@ -9,12 +9,13 @@
 <body>
   <p class="notice"><%= notice %></p>
   <p class="alert"><%= alert %></p>
+  <!-- <%= image_tag("St-BotolphBanner1_01.gif") %> -->
   <nav>
     <div class="nav-wrapper">
       <a href="#!" class="brand-logo"></a>
-      <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
-      <ul class="brand-logo center hide-on-med-and-down">
-        <li><a href="#">Home</a></li>
+      <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">Menu</i></a>
+      <ul class="center-align hide-on-med-and-down">
+        <li><%= link_to("Home", root_path) %></li>
         <li><a href="#">Join The SBNA</a></li>
         <li><a href="#">Meetings</a></li>
         <li><a href="#">Meeting Minutes</a></li>
@@ -22,14 +23,47 @@
         <li><a href="#">Committees</a></li>
         <li><a href="#">Contact</a></li>
       </ul>
+      <ul class="hide-on-med-and-down">
+        <% if user_signed_in? %>
+        <li><%= link_to("Sign Out", destroy_user_session_path, method: :delete,
+          class: "sign-links user-signs") %>
+        </li>
+          <% if current_user.admin? %>
+            <li>
+              <%= link_to("Admin Section", admin_users_path,
+              class: "sign-links user-signs") %>
+            </li>
+          <% end %>
+      <% else %>
+        <li><%= link_to("Sign In", new_user_session_path,
+          class: "sign-links user-signs") %>
+        </li>
+      <% end %>
+
+      </ul>
       <ul class="side-nav" id="mobile-demo">
-        <li><a href="#">Home</a></li>
-        <li><a href="#">Join The SBNA</a></li>
-        <li><a href="#">Meetings</a></li>
-        <li><a href="#">Meeting Minutes</a></li>
-        <li><a href="#">Board</a></li>
-        <li><a href="#">Committees</a></li>
-        <li><a href="#">Contact</a></li>
+        <li><a class="navside" href="#">Home</a></li>
+        <li><a class="navside" href="#">Join The SBNA</a></li>
+        <li><a class="navside" href="#">Meetings</a></li>
+        <li><a class="navside" href="#">Meeting Minutes</a></li>
+        <li><a class="navside" href="#">Board</a></li>
+        <li><a class="navside" href="#">Committees</a></li>
+        <li><a class="navside" href="#">Contact</a></li>
+        <% if user_signed_in? %>
+          <li><%= link_to("Sign Out", destroy_user_session_path, method: :delete,
+            class: "navside") %>
+          </li>
+          <% if current_user.admin? %>
+            <li>
+              <%= link_to("Admin Section", admin_users_path,
+              class: "navside") %>
+            </li>
+          <% end %>
+        <% else %>
+          <li><%= link_to("Sign In", new_user_session_path,
+          class: "navside") %>
+          </li>
+        <% end %>
       </ul>
     </div>
   </nav>

@@ -28,3 +28,15 @@ p.notice{
 div.nav-wrapper{
   background-color: $maincolor;
 }
+
+.navside {
+  font-size: 28px;
+  border-bottom: solid black;
+}
+a.navside:hover {
+  background-color: $maincolor;
+  color: white;
+}
+#mobile-demo {
+  background-color: lightgrey;
+}
