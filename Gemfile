@@ -2,9 +2,12 @@ source 'https://rubygems.org/'
 
 gem 'rails', '4.2.5'
 gem 'pg', '~> 0.15'
-gem 'sass-rails', '4.0.5'
+gem 'sass-rails'
 gem 'uglifier', '>= 1.3.0'
 gem 'jquery-rails'
+gem 'materialize-sass'
+gem 'devise'
+
 group :development, :test do
   gem 'capybara'
   gem 'factory_girl_rails'
@@ -15,6 +18,8 @@ group :development, :test do
 end
 
 group :test do
+  gem 'simplecov', :require => false, :group => :test
+  gem 'coveralls', require: false
   gem 'launchy', require: false
 end
 
