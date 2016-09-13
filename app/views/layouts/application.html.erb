@@ -7,7 +7,32 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-
+  <p class="notice"><%= notice %></p>
+  <p class="alert"><%= alert %></p>
+  <nav>
+    <div class="nav-wrapper">
+      <a href="#!" class="brand-logo"></a>
+      <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+      <ul class="brand-logo center hide-on-med-and-down">
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Join The SBNA</a></li>
+        <li><a href="#">Meetings</a></li>
+        <li><a href="#">Meeting Minutes</a></li>
+        <li><a href="#">Board</a></li>
+        <li><a href="#">Committees</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+      <ul class="side-nav" id="mobile-demo">
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Join The SBNA</a></li>
+        <li><a href="#">Meetings</a></li>
+        <li><a href="#">Meeting Minutes</a></li>
+        <li><a href="#">Board</a></li>
+        <li><a href="#">Committees</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
 <%= yield %>
 
 </body>
