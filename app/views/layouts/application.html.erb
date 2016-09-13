@@ -1,20 +1,21 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Sbna</title>
+  <title>Saint Botolph Neighborhood Association</title>
   <%= stylesheet_link_tag    'application', media: 'all' %>
   <%= javascript_include_tag 'application' %>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
   <%= csrf_meta_tags %>
 </head>
 <body>
   <p class="notice"><%= notice %></p>
   <p class="alert"><%= alert %></p>
-  <!-- <%= image_tag("St-BotolphBanner1_01.gif") %> -->
   <nav>
     <div class="nav-wrapper">
       <a href="#!" class="brand-logo"></a>
-      <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">Menu</i></a>
-      <ul class="center-align hide-on-med-and-down">
+      <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+      <ul class="center hide-on-med-and-down">
         <li><%= link_to("Home", root_path) %></li>
         <li><a href="#">Join The SBNA</a></li>
         <li><a href="#">Meetings</a></li>
@@ -22,24 +23,21 @@
         <li><a href="#">Board</a></li>
         <li><a href="#">Committees</a></li>
         <li><a href="#">Contact</a></li>
-      </ul>
-      <ul class="hide-on-med-and-down">
         <% if user_signed_in? %>
-        <li><%= link_to("Sign Out", destroy_user_session_path, method: :delete,
+          <li><%= link_to("Sign Out", destroy_user_session_path, method: :delete,
           class: "sign-links user-signs") %>
-        </li>
+          </li>
           <% if current_user.admin? %>
             <li>
               <%= link_to("Admin Section", admin_users_path,
               class: "sign-links user-signs") %>
             </li>
           <% end %>
-      <% else %>
-        <li><%= link_to("Sign In", new_user_session_path,
-          class: "sign-links user-signs") %>
-        </li>
-      <% end %>
-
+        <% else %>
+          <li><%= link_to("Sign In", new_user_session_path,
+            class: "sign-links user-signs") %>
+          </li>
+        <% end %>
       </ul>
       <ul class="side-nav" id="mobile-demo">
         <li><a class="navside" href="#">Home</a></li>
@@ -67,7 +65,10 @@
       </ul>
     </div>
   </nav>
+  <div id="topbanner">
+  </div>
 <%= yield %>
+
 
 </body>
 </html>

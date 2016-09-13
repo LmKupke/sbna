@@ -16,6 +16,7 @@
  @import "materialize";
 
 $maincolor: #922429;
+$navmaincolor: #D7D7D7;
 
 p.alert {
   margin: 0px;
@@ -26,7 +27,15 @@ p.notice{
 }
 
 div.nav-wrapper{
+  background-color: $navmaincolor;
+  a {
+    color: $maincolor;
+  }
+}
+
+div.nav-wrapper a:hover{
   background-color: $maincolor;
+  color: $navmaincolor;
 }
 
 .navside {
@@ -39,4 +48,28 @@ a.navside:hover {
 }
 #mobile-demo {
   background-color: lightgrey;
+}
+
+div#topbanner {
+  background-image: image-url("St-BotolphBanner1_01.gif");
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 220px;
+  width: 100%;
+  padding: 0;
+}
+
+.button-collapse{
+  background-color: $navmaincolor;
+  color: $maincolor;
+  padding-right: 10px;
+}
+
+.button-collapse:hover{
+  background-color: $maincolor;
+  color: white;
+}
+nav ul.hide-on-med-and-down {
+  text-align: center;
+  margin: auto;
 }
