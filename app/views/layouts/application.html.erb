@@ -40,8 +40,8 @@
         <% end %>
       </ul>
       <ul class="side-nav" id="mobile-demo">
-        <li><a class="navside" href="#">Home</a></li>
-        <li><a class="navside" href="#">Join The SBNA</a></li>
+        <li><%= link_to "Home", root_path, class: "navside"  %></li>
+        <li><%= link_to "Join The SBNA", new_user_registration_path, class: "navside" %></li>
         <li><a class="navside" href="#">Meetings</a></li>
         <li><a class="navside" href="#">Meeting Minutes</a></li>
         <li><a class="navside" href="#">Board</a></li>
@@ -66,7 +66,7 @@
     </div>
   </nav>
   <div id="topbanner">
-    <%= image_tag("St-BotolphBanner1_01") %>
+    <%= image_tag("St-BotolphBanner1_01.gif") %>
   </div>
 <%= yield %>
 

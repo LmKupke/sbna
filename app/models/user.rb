@@ -19,4 +19,8 @@ class User < ActiveRecord::Base
   def fullname
     "#{first_name} #{last_name}"
   end
+
+  def configure_permitted_parameters
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:first_name, :last_name])
+  end
 end
