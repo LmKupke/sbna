@@ -32,6 +32,14 @@ div.nav-wrapper{
     color: $maincolor;
   }
 }
+#search {
+  height:64px;
+  margin-bottom: 0px;
+}
+nav .input-field label i {
+    color: #922429;
+    transition: color .3s;
+}
 
 div.nav-wrapper a:hover{
   background-color: $maincolor;
