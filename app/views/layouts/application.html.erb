@@ -61,12 +61,9 @@
       <ul class="side-nav" id="mobile-demo">
         <li><%= link_to "SBNA", root_path, class: "navside"  %></li>
         <li><a class="navside" href="#">Events</a></li>
-        <li><a href="#" class="dropdown-button" href="#!" data-activates="dropdown2">About<i class="material-icons right">arrow_drop_down</i></a></li>
-        <ul id="dropdown2" class="dropdown-content">
-          <li><a href="#">Board</a></li>
-          <li><a href="#">Committees</a></li>
-          <li><a href="#">Meeting Minutes</a></li>
-        </ul>
+        <li><a class="navside" href="#">Board</a></li>
+        <li><a class="navside" href="#">Committees</a></li>
+        <li><a class="navside" href="#">Meeting Minutes</a></li>
         <li><a class="navside" href="#">Contact</a></li>
         <% if user_signed_in? %>
           <li><%= link_to("Sign Out", destroy_user_session_path, method: :delete,

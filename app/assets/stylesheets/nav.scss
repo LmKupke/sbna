@@ -1,0 +1,85 @@
+$maincolor: #922429;
+$navmaincolor: #D7D7D7;
+
+#search {
+  height:64px;
+  margin-bottom: 0px;
+}
+
+nav .input-field label i {
+  color: #navmaincolor;
+  transition: color .3s;
+}
+
+.input-field input[type=search]:focus {
+  background-color: #922429;
+  border: 0;
+  box-shadow: none;
+  color: $navmaincolor;
+}
+
+.input-field input[type=search]:focus + label i, .input-field input[type=search]:focus ~ .mdi-navigation-close, .input-field input[type=search]:focus ~ .material-icons {
+    color: #ddd;
+}
+
+div.nav-wrapper{
+  background-color: $maincolor;
+  a {
+    color: $navmaincolor;
+  }
+}
+
+div.nav-wrapper a:hover{
+  background-color: $navmaincolor;
+  color: $maincolor;
+}
+
+.navside {
+  font-size: 28px;
+  border-bottom: solid black;
+}
+a.navside:hover {
+  background-color: $maincolor;
+  color: white;
+}
+#mobile-demo {
+  background-color: $maincolor;
+}
+
+#dropdown2 {
+  border-radius: black;
+}
+
+
+div#topbanner img {
+  // background-image: image-url("St-BotolphBanner1_01.gif");
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: auto;
+  width: 100%;
+  padding: 0;
+}
+
+.button-collapse{
+  background-color: $navmaincolor;
+  color: $maincolor;
+  padding-right: 10px;
+}
+
+.button-collapse:hover{
+  background-color: $maincolor;
+  color: white;
+}
+nav ul.hide-on-med-and-down {
+  text-align: center;
+  margin-left: auto;
+}
+
+@media only screen and (max-width: 992px) {
+  nav, nav .nav-wrapper {
+    background-color: $navmaincolor;
+  }
+  i {
+    color: $maincolor
+  }
+}

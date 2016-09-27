@@ -15,8 +15,7 @@
  */
  @import "materialize";
 
-$maincolor: #922429;
-$navmaincolor: #D7D7D7;
+
 
 p.alert {
   margin: 0px;
@@ -24,60 +23,4 @@ p.alert {
 
 p.notice{
   margin: 0px;
-}
-
-div.nav-wrapper{
-  background-color: $navmaincolor;
-  a {
-    color: $maincolor;
-  }
-}
-#search {
-  height:64px;
-  margin-bottom: 0px;
-}
-nav .input-field label i {
-    color: #922429;
-    transition: color .3s;
-}
-
-div.nav-wrapper a:hover{
-  background-color: $maincolor;
-  color: $navmaincolor;
-}
-
-.navside {
-  font-size: 28px;
-  border-bottom: solid black;
-}
-a.navside:hover {
-  background-color: $maincolor;
-  color: white;
-}
-#mobile-demo {
-  background-color: lightgrey;
-}
-
-div#topbanner img {
-  // background-image: image-url("St-BotolphBanner1_01.gif");
-  background-repeat: no-repeat;
-  background-size: cover;
-  height: auto;
-  width: 100%;
-  padding: 0;
-}
-
-.button-collapse{
-  background-color: $navmaincolor;
-  color: $maincolor;
-  padding-right: 10px;
-}
-
-.button-collapse:hover{
-  background-color: $maincolor;
-  color: white;
-}
-nav ul.hide-on-med-and-down {
-  text-align: center;
-  margin-left: auto;
 }
