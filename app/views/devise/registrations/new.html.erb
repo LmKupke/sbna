@@ -40,9 +40,10 @@
         <%= f.text_field :city %>
       </div>
 
-
-      <%= f.label :state %><br />
-      <%= f.select :state, options_for_select(us_states), { prompt: 'Choose Country' } %>
+      <div class="field">
+        <%= f.label :state %>
+        <%= f.select :state, options_for_select(@states), include_blank: true %>
+      </div>
 
 
       <div class="field">
