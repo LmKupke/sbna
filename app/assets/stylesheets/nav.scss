@@ -5,7 +5,9 @@ $navmaincolor: #D7D7D7;
   height:64px;
   margin-bottom: 0px;
 }
-
+#search:focus {
+  background-color: $maincolor;
+}
 nav .input-field label i {
   color: #navmaincolor;
   transition: color .3s;
