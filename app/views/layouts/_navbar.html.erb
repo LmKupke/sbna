@@ -60,6 +60,9 @@
 
     </ul>
     <ul class="side-nav" id="mobile-demo">
+      <% if user_signed_in? %>
+        <li><%= link_to "Profile", user_path(current_user), class: "navside" %></li>
+      <% end %>
       <li><%= link_to "SBNA", root_path, class: "navside"  %></li>
       <li><a class="navside" href="#">Events</a></li>
       <li><a class="navside" href="#">Board</a></li>
