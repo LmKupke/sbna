@@ -1,0 +1,73 @@
+<nav>
+  <div class="nav-wrapper">
+    <a href="#!" class="brand-logo"></a>
+    <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+    <ul class="center hide-on-med-and-down">
+      <li><%= link_to("SBNA", root_path) %></li>
+      <li><a href="#">Events</a></li>
+      <li><a href="#" class="dropdown-button" href="#!" data-activates="dropdown1">About<i class="material-icons right">arrow_drop_down</i></a></li>
+        <ul id="dropdown1" class="dropdown-content">
+          <li><a href="#">Board</a></li>
+          <li><a href="#">Committees</a></li>
+          <li><a href="#">Meeting Minutes</a></li>
+        </ul>
+      <li><a href="#">Contact</a></li>
+      <% if !user_signed_in? %>
+        <li><%= link_to "Join The SBNA", new_user_registration_path %></li>
+      <% end %>
+      <% if user_signed_in? %>
+        <li><%= link_to("Sign Out", destroy_user_session_path, method: :delete,
+        class: "sign-links user-signs") %>
+        </li>
+        <% if current_user.admin? %>
+          <li>
+            <%= link_to("Admin Section", admin_users_path,
+            class: "sign-links user-signs") %>
+          </li>
+        <% end %>
+      <% else %>
+        <ul class="right">
+          <li>
+            <div class="nav-wrapper">
+              <form>
+                <div class="input-field">
+                  <input id="search" type="search" required>
+                  <label for="search"><i class="material-icons">search</i></label>
+                  <i class="material-icons">close</i>
+                </div>
+              </form>
+            </div>
+          </li>
+          <li><%= link_to("Sign In", new_user_session_path,
+          class: "sign-links user-signs") %>
+        </li>
+        </ul>
+      <% end %>
+
+    </ul>
+    <ul class="side-nav" id="mobile-demo">
+      <li><%= link_to "SBNA", root_path, class: "navside"  %></li>
+      <li><a class="navside" href="#">Events</a></li>
+      <li><a class="navside" href="#">Board</a></li>
+      <li><a class="navside" href="#">Committees</a></li>
+      <li><a class="navside" href="#">Meeting Minutes</a></li>
+      <li><a class="navside" href="#">Contact</a></li>
+      <% if user_signed_in? %>
+        <li><%= link_to("Sign Out", destroy_user_session_path, method: :delete,
+          class: "navside") %>
+        </li>
+        <% if current_user.admin? %>
+          <li>
+            <%= link_to("Admin Section", admin_users_path,
+            class: "navside") %>
+          </li>
+        <% end %>
+      <% else %>
+        <li><%= link_to "Join The SBNA", new_user_registration_path, class: "navside" %></li>
+        <li><%= link_to("Sign In", new_user_session_path,
+        class: "navside") %>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+</nav>

@@ -17,16 +17,13 @@ class User < ActiveRecord::Base
    allow_nil: false,
    format: { with: /\A([\w+\-].?)+@[a-z\d\-]+(\.[a-z]+)*\.[a-z]+\z/i },
    uniqueness: true
-  validates :street_number,
-    presence: true,
-    numericality: { only_integer: true, greater_than: -1 }
-  validates :street_name, presence: true
+  validates :street, presence: true, allow_nil: false, allow_blank: false
   validates :zipcode,
     presence: true,
-    length: { is: 5 },
-    numericality: { only_integer: true, greater_than: 0 }
+    length: { is: 5 }
+  validates :phone_number, presence: true, length:{ is: 10 }
   validates :city, presence: true
-  validates :state, presence: true, length: { is: 2 }, inclusion: { in: STATES }
+  validates :state, presence: true, inclusion: { in: STATES }
   validates :other_address, presence: false, allow_nil: true
 
 
@@ -40,11 +37,11 @@ class User < ActiveRecord::Base
 
   def full_address
     if other_address.nil
-      "#{street_number} #{street_name}\n
+      "#{street}\n
       #{other_address}\n
       #{city}, #{state} #{zipcode}"
     else
-      "#{street_number} #{street_name}\n
+      "#{street}\n
       #{city}, #{state} #{zipcode}"
     end
   end
