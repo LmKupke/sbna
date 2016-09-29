@@ -1,7 +1,6 @@
 class RegistrationsController < Devise::RegistrationsController
 
   def new
-    @states = STATES
     super
   end
 

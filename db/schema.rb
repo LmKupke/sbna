@@ -36,7 +36,7 @@ ActiveRecord::Schema.define(version: 20160927191021) do
     t.string   "street",                                    null: false
     t.string   "city",                                      null: false
     t.string   "state",                                     null: false
-    t.integer  "zipcode",                                   null: false
+    t.string   "zipcode",                                   null: false
     t.string   "other_address"
   end
 
