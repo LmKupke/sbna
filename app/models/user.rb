@@ -17,10 +17,7 @@ class User < ActiveRecord::Base
    allow_nil: false,
    format: { with: /\A([\w+\-].?)+@[a-z\d\-]+(\.[a-z]+)*\.[a-z]+\z/i },
    uniqueness: true
-  validates :street_number,
-    presence: true,
-    numericality: { only_integer: true, greater_than: -1 }
-  validates :street_name, presence: true
+  validates :street, presence: true
   validates :zipcode,
     presence: true,
     length: { is: 5 },

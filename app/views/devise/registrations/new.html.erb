@@ -20,15 +20,10 @@
       </div>
 
 
-      <div class="col s12">
-        <div class="col s6">
-          <%= f.label :street_number %><br />
-          <%= f.text_field :street_number %>
-        </div>
-        <div class="col s6">
-          <%= f.label :street_name %><br />
-          <%= f.text_field :street_name %>
-        </div>
+
+      <div class="field">
+        <%= f.label :street, "Address Line 1" %><br />
+        <%= f.text_field :street %>
       </div>
       <div class="field">
         <%= f.label :other_address, "Address Line 2" %><br />
