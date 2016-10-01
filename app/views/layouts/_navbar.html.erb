@@ -16,15 +16,29 @@
         <li><%= link_to "Join The SBNA", new_user_registration_path %></li>
       <% end %>
       <% if user_signed_in? %>
-        <li><%= link_to("Sign Out", destroy_user_session_path, method: :delete,
-        class: "sign-links user-signs") %>
-        </li>
-        <% if current_user.admin? %>
+        <ul class="right">
           <li>
-            <%= link_to("Admin Section", admin_users_path,
-            class: "sign-links user-signs") %>
+            <div class="nav-wrapper">
+              <form>
+                <div class="input-field">
+                  <input id="search" type="search" required>
+                  <label for="search"><i class="material-icons">search</i></label>
+                  <i class="material-icons">close</i>
+                </div>
+              </form>
+            </div>
           </li>
-        <% end %>
+          <li><%= link_to "Profile", user_path(current_user) %></li>
+          <li><%= link_to("Sign Out", destroy_user_session_path, method: :delete,
+          class: "sign-links user-signs") %>
+          </li>
+          <% if current_user.admin? %>
+            <li>
+              <%= link_to("Admin Section", admin_users_path,
+              class: "sign-links user-signs") %>
+            </li>
+          <% end %>
+        </ul>
       <% else %>
         <ul class="right">
           <li>
@@ -46,6 +60,9 @@
 
     </ul>
     <ul class="side-nav" id="mobile-demo">
+      <% if user_signed_in? %>
+        <li><%= link_to "Profile", user_path(current_user), class: "navside" %></li>
+      <% end %>
       <li><%= link_to "SBNA", root_path, class: "navside"  %></li>
       <li><a class="navside" href="#">Events</a></li>
       <li><a class="navside" href="#">Board</a></li>

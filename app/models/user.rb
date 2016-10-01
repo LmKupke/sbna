@@ -36,13 +36,8 @@ class User < ActiveRecord::Base
   end
 
   def full_address
-    if other_address.nil
-      "#{street}\n
-      #{other_address}\n
-      #{city}, #{state} #{zipcode}"
-    else
-      "#{street}\n
-      #{city}, #{state} #{zipcode}"
-    end
+    "#{street}
+    #{other_address}
+    #{city}, #{state} #{zipcode}"
   end
 end
