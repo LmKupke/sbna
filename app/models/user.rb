@@ -26,6 +26,7 @@ class User < ActiveRecord::Base
   validates :state, presence: true, inclusion: { in: STATES }
   validates :other_address, presence: false, allow_nil: true
 
+  has_many :events
 
   def admin?
     role == "admin"
