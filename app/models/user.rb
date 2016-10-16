@@ -18,7 +18,7 @@ class User < ActiveRecord::Base
    format: { with: /\A([\w+\-].?)+@[a-z\d\-]+(\.[a-z]+)*\.[a-z]+\z/i },
    uniqueness: true
   validates :street, presence: true, allow_nil: false, allow_blank: false,
-    format: { with: /\d{1,4}( \w+){1,4}/}
+    format: { with: /\d{1,4}( \w+){1,4}/, message: "Please have house number and street name and street suffix"}
   validates :zipcode,
     presence: true,
     length: { is: 5 }
