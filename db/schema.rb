@@ -24,8 +24,9 @@ ActiveRecord::Schema.define(version: 20161016170725) do
     t.integer  "user_id",                     null: false
     t.datetime "created_at",                  null: false
     t.datetime "updated_at",                  null: false
-    t.datetime "end",                         null: false
+    t.datetime "end"
     t.boolean  "allDay",      default: false, null: false
+    t.string   "color"
   end
 
   create_table "users", force: :cascade do |t|

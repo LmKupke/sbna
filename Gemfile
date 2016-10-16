@@ -9,6 +9,9 @@ gem 'materialize-sass'
 gem 'devise'
 gem 'fullcalendar-rails'
 gem 'momentjs-rails'
+gem 'bootstrap-sass'
+gem 'bootstrap'
+gem 'simple_form'
 
 group :development, :test do
   gem 'capybara'
