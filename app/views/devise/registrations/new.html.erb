@@ -1,15 +1,16 @@
 <%= render 'layouts/error_messages', object: resource %>
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-    <div class="row">
-      <div class="col s10 offset-s1">
+<div class="row">
+  <div class="col s10 offset-s1">
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+
 
       <div class="input-field">
-        <%= f.label :first_name %>
+        <%= f.label :first_name, "First Name" %>
         <%= f.text_field :first_name, autofocus: true %>
       </div>
 
       <div class="input-field">
-        <%= f.label :last_name %><br />
+        <%= f.label :last_name, "Last Name" %><br />
         <%= f.text_field :last_name %>
       </div>
 
@@ -19,7 +20,7 @@
       </div>
 
       <div class="input-field">
-        <%= f.label :phone_number %><br />
+        <%= f.label :phone_number, "Phone Number" %><br />
         <%= f.text_field :phone_number, class: "materialize-textarea", length: "10" %>
       </div>
 
@@ -38,7 +39,7 @@
       </div>
 
       <div class="input-field">
-        <%= f.label :state %>
+        <%= f.label :state %><br /><br />
         <%= f.select :state, options_for_select(RegistrationsController::STATES), include_blank: true %>
       </div>
 
@@ -57,12 +58,12 @@
       </div>
 
       <div class="input-field">
-        <%= f.label :password_confirmation %><br />
+        <%= f.label :password_confirmation, "Password Confirmation" %><br />
         <%= f.password_field :password_confirmation, autocomplete: "off" %>
       </div>
 
       <div class="actions">
-        <%= f.submit "Sign up" %>
+        <%= f.submit "Sign Up" %>
       </div>
     </div>
   </div>
