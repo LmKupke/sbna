@@ -16,9 +16,13 @@
 //= require materialize-sprockets
 //= require fullcalendar
 //= require fullcalendar/gcal
+//= require datetimepicker
 
 $(document).ready(function(){
   $(".button-collapse").sideNav();
+  $('#datetimepicker').datetimepicker();
+  $('#datetimepicker2').datetimepicker();
+
   $('#calendar').fullCalendar({
     header: {
       left: 'today prev, next',

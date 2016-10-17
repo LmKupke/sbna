@@ -9,10 +9,18 @@ $navmaincolor: #D7D7D7;
   background-color: $maincolor;
 }
 nav .input-field label i {
-  color: #navmaincolor;
+  color: $navmaincolor;
   transition: color .3s;
 }
 
+.dropdown-content li > a, .dropdown-content li > span {
+  color: $navmaincolor;
+  background-color: $maincolor;
+}
+
+.dropdown-content .active li  a, .dropdown-content li > span {
+  color: $navmaincolor;
+}
 .input-field input[type=search]:focus {
   background-color: #922429;
   border: 0;
