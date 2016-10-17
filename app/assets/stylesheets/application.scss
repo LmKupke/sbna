@@ -12,6 +12,9 @@
  *
  *= require_tree .
  *= require_self
+ *= require fullcalendar
+ *= require datetimepicker
+
  */
  @import "materialize";
 
@@ -25,5 +28,9 @@ p.notice{
   margin: 0px;
 }
 select#user_state {
+  display: flex;
+}
+
+select {
   display: flex;
 }

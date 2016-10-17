@@ -4,7 +4,7 @@
     <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
     <ul class="center hide-on-med-and-down">
       <li><%= link_to("SBNA", root_path) %></li>
-      <li><a href="#">Events</a></li>
+      <li><%= link_to("Events", events_path) %></li>
       <li><a href="#" class="dropdown-button" href="#!" data-activates="dropdown1">About<i class="material-icons right">arrow_drop_down</i></a></li>
         <ul id="dropdown1" class="dropdown-content">
           <li><a href="#">Board</a></li>
@@ -64,7 +64,7 @@
         <li><%= link_to "Profile", user_path(current_user), class: "navside" %></li>
       <% end %>
       <li><%= link_to "SBNA", root_path, class: "navside"  %></li>
-      <li><a class="navside" href="#">Events</a></li>
+      <li><%= link_to("Events", events_path, class: "navside") %></a></li>
       <li><a class="navside" href="#">Board</a></li>
       <li><a class="navside" href="#">Committees</a></li>
       <li><a class="navside" href="#">Meeting Minutes</a></li>

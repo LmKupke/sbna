@@ -5,5 +5,7 @@ Rails.application.routes.draw do
 
   namespace :api do
     resources :home, only: [:index]
+    resources :events, only: [:index,:new,:edit,:update]
   end
+  resources :events, only: [:index,:show, :new, :create, :edit, :update, :destroy]
 end
