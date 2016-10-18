@@ -54,7 +54,6 @@ feature "sign_up", %{
 
 
       click_button('Sign Up')
-      expect(ActionMailer::Base.deliveries.count).to eq(1)
       expect(page).to have_content("Welcome! You have signed up successfully.")
     end
   end
