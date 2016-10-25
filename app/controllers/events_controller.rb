@@ -3,6 +3,10 @@ class EventsController < ApplicationController
 
   end
 
+  def calendar
+    render "calendar"
+  end
+
   def show
     @event = Event.find(params["id"])
   end

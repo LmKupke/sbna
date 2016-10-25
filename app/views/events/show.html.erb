@@ -1,4 +1,14 @@
+<div class="row">
+<% if user_signed_in? %>
+  <% if current_user.admin? %>
+    <%= link_to edit_event_path(@event), class: "right btn-floating btn-large waves-effect waves-light red" do %>
+      <i class="material-icons">mode_edit</i>
+    <% end %>
+  <% end %>
+<% end %>
+
 <%= @event.title %>
 <%= @event.start %>
 <%= @event.end %>
 <%= @event.description %>
+</div>

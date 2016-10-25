@@ -4,7 +4,11 @@
     <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
     <ul class="center hide-on-med-and-down">
       <li><%= link_to("SBNA", root_path) %></li>
-      <li><%= link_to("Events", events_path) %></li>
+      <li><a href="#" class="dropdown-button" href="#!" data-activates="dropdown3">Events<i class="material-icons right">arrow_drop_down</i></a></li>
+        <ul id="dropdown3" class="dropdown-content">
+          <li><%= link_to("Upcoming Events", events_path) %></li>
+          <li><%= link_to("Calendar",calendar_path) %></li>
+        </ul>
       <li><a href="#" class="dropdown-button" href="#!" data-activates="dropdown1">About<i class="material-icons right">arrow_drop_down</i></a></li>
         <ul id="dropdown1" class="dropdown-content">
           <li><a href="#">Board</a></li>
@@ -65,9 +69,12 @@
       <% end %>
       <li><%= link_to "SBNA", root_path, class: "navside"  %></li>
       <li><%= link_to("Events", events_path, class: "navside") %></a></li>
-      <li><a class="navside" href="#">Board</a></li>
-      <li><a class="navside" href="#">Committees</a></li>
-      <li><a class="navside" href="#">Meeting Minutes</a></li>
+      <li><a href="#" class="dropdown-button navside" href="#!" data-activates="dropdown2">About<i class="material-icons right">arrow_drop_down</i></a></li>
+        <ul id="dropdown2" class="dropdown-content">
+          <li><a href="#">Board</a></li>
+          <li><a href="#">Committees</a></li>
+          <li><a href="#">Meeting Minutes</a></li>
+        </ul>
       <li><a class="navside" href="#">Contact</a></li>
       <% if user_signed_in? %>
         <li><%= link_to("Sign Out", destroy_user_session_path, method: :delete,
