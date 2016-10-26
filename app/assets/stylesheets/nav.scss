@@ -8,15 +8,36 @@ $navmaincolor: #D7D7D7;
 #search:focus {
   background-color: $maincolor;
 }
+
+// li.topnav-drop a {
+//   color: $maincolor;
+// }
+ul.dropdown-content.active li {
+  a {
+    color: $navmaincolor;
+    background-color: $maincolor;
+    font-size: 14px;
+  }
+}
+
+ul.dropdown-content {
+  background-color: rgba(255, 255, 255, 0);
+}
+
+.dropdown-content.active li:hover {
+  background-color: rgba(255, 255, 255, 0);
+}
+// .dropdown-content li > span {
+//   color: $maincolor;
+// }
 nav .input-field label i {
   color: $navmaincolor;
   transition: color .3s;
 }
-
-.dropdown-content li > a, .dropdown-content li > span {
-  color: $navmaincolor;
-  background-color: $maincolor;
-}
+// .dropdown-content li > a, .dropdown-content li > span {
+//   color: $navmaincolor;
+//   background-color: $maincolor;
+// }
 
 .dropdown-content .active li  a, .dropdown-content li > span {
   color: $navmaincolor;
@@ -48,10 +69,13 @@ div.nav-wrapper a:hover{
   font-size: 28px;
   border-bottom: solid black;
 }
-a.navside:hover {
-  background-color: $maincolor;
-  color: white;
+
+a.navside.drop:hover {
+  background-color: $navmaincolor;
+  color: $maincolor;
 }
+
+
 #mobile-demo {
   background-color: $maincolor;
 }
