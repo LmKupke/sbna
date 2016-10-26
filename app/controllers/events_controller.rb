@@ -17,6 +17,7 @@ class EventsController < ApplicationController
     else
       @event = Event.new
       @url = events_path
+      @method = "post"
       @value = "Create Event"
     end
   end
@@ -27,6 +28,7 @@ class EventsController < ApplicationController
     if @event.save
       redirect_to event_path(@event.id)
     else
+      flash[:multiple_error] =  @event.errors.full_messages
       # flash[:alert] = "Date can not be in the past. If event is today start time can not be in the past"
       redirect_to new_event_path
     end
@@ -36,9 +38,10 @@ class EventsController < ApplicationController
     if current_user == nil || current_user.admin? == false
       redirect_to root_path
     else
-      @event = Event.new
-      @url = events_path
+      @event = Event.find(params["id"])
+      @url = event_path
       @value = "Update Event"
+      @method = "patch"
     end
   end
 
@@ -83,6 +86,6 @@ class EventsController < ApplicationController
   private
 
   def event_params
-    params.require(:event).permit(:title, :location, :description, :start, :end, :color)
+    params.require(:event).permit(:title, :location, :description, :start, :end, :color, :picture)
   end
 end

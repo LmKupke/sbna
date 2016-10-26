@@ -10,8 +10,13 @@
   <% end %>
 <% end %>
 
-<%= @event.title %>
-<%= @event.start %>
-<%= @event.end %>
+<div class="container">
+  <div class="">
+    <%= image_tag(@event.picture, size: "300") %>
+  </div>
+  <%= @event.title %>
+  From <%= @event.start.strftime('%m/%d/%Y %I:%M%p') %> to <%= @event.end.strftime('%m/%d/%Y %I:%M%p') %>
+</div>
+
 <%= @event.description %>
 </div>

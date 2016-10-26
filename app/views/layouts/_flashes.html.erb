@@ -11,6 +11,23 @@
         Materialize.toast('<%= message %>', 3000);
       });
     </script>
+    <% elsif type == "multiple_error" %>
+        <script>
+          var i = 0;
+          var howMany = <%= message.size %>;
+          var work = function(){
+            <%= raw message.to_json %>.forEach(function(a) {
+              console.log((a));
+              var message = "";
+              message = "<li>" + <%= raw message.to_json %>[i] + "</li>";
+              Materialize.toast(message, 5000, 'red');
+              i++;
+            });
+          };
+          if (i < howMany) {
+            setTimeout(work, 4000);
+          };
+        </script>
   <% else %>
     <script>
       $(function() {

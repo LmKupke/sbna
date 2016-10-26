@@ -1,7 +1,7 @@
 <div class="row">
   <div class="col s10 offset-s1">
 
-    <%= form_for @event, url: @url do |f| %>
+    <%= form_for(@event, url: @url, method: @method) do |f| %>
 
       <div class="input-field">
         <%= f.label :title %><br />
@@ -32,20 +32,18 @@
       <%= f.select :color, options_for_select(EventsController::COLORS)  %>
 
 
-      <form action="#" class="col s12">
-        <div class="file-field input-field">
-          <div class="btn">
-            <span>Event Image</span>
-            <%= f.file_field :picture %>
-          </div>
-          <div class="file-path-wrapper">
-            <input class="file-path validate" type="text">
-          </div>
+      <div class="file-field input-field">
+        <div class="btn">
+          <span>Event Image</span>
+          <%= f.file_field :picture %>
         </div>
-      </form>
+        <div class="file-path-wrapper">
+          <input class="file-path validate" type="text">
+        </div>
+      </div>
 
       <div class="actions">
-        <%= f.submit @value, class: "center btn" %>
+        <%= f.submit @value, class: "btn" %>
       </div>
 
     <% end %>

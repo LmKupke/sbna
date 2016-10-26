@@ -54,7 +54,7 @@ feature "sign_up", %{
 
 
       click_button('Sign Up')
-      expect(page).to have_content("Welcome! You have signed up successfully.")
+      expect(page).to have_link("Profile")
     end
   end
 end
