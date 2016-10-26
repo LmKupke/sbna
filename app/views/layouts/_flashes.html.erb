@@ -1,0 +1,21 @@
+<% flash.each do |type, message| %>
+  <% if type == "success" %>
+    <script>
+      $(function() {
+        Materialize.toast('<%= message %>', 3000, 'green');
+      });
+    </script>
+  <% elsif type == "toast" %>
+    <script>
+      $(function() {
+        Materialize.toast('<%= message %>', 3000);
+      });
+    </script>
+  <% else %>
+    <script>
+      $(function() {
+        Materialize.toast('<%= message %>', 3000, 'red');
+      });
+      </script>
+  <% end %>
+<% end %>

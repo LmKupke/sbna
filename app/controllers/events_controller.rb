@@ -56,12 +56,13 @@ class EventsController < ApplicationController
 
   def destroy
     @event = Event.find(params["id"])
-    if current_user != @event.organizer
-      flash[:alert] = "Sorry you're not the event organizer"
-      redirect_to newsfeeds_path
+    if current_user == nil || current_user.admin? == false
+      flash[:alert] = "Sorry you do not have those priviledges."
+      redirect_to root_path
     else
+      flash[:success] = "You successfully deleted your event!"
       @event.destroy
-      redirect_to events_path
+      redirect_to calendar_path
     end
   end
 

@@ -9,9 +9,7 @@ $navmaincolor: #D7D7D7;
   background-color: $maincolor;
 }
 
-// li.topnav-drop a {
-//   color: $maincolor;
-// }
+
 ul.dropdown-content.active li {
   a {
     color: $navmaincolor;
@@ -27,17 +25,11 @@ ul.dropdown-content {
 .dropdown-content.active li:hover {
   background-color: rgba(255, 255, 255, 0);
 }
-// .dropdown-content li > span {
-//   color: $maincolor;
-// }
+
 nav .input-field label i {
   color: $navmaincolor;
   transition: color .3s;
 }
-// .dropdown-content li > a, .dropdown-content li > span {
-//   color: $navmaincolor;
-//   background-color: $maincolor;
-// }
 
 .dropdown-content .active li  a, .dropdown-content li > span {
   color: $navmaincolor;
