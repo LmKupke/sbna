@@ -10,7 +10,7 @@
 
       <div class="input-field">
         <%= f.label :location %><br />
-        <%= f.text_field :location %>
+        <%= f.text_field :location, placeholder: "Please write a full address!" %>
       </div>
 
       <div class="input-field">
@@ -18,23 +18,34 @@
         <%= f.text_area :description %>
       </div>
 
-      <div class="input-field">
-        <%= f.label :start %>
+      <div class="input-field col s6" id="start_date_event">
+        <%= f.label :start, id: "event_start_label" %>
         <%= f.text_field :start, id: "datetimepicker" %>
       </div>
 
-      <div class="input-field">
+      <div class="input-field col s6">
         <%= f.label :end %>
         <%= f.text_field :end, id: "datetimepicker2" %>
       </div>
 
-      <div class="input-field">
-        <%= f.label :color %><br />
-        <%= f.select :color, options_for_select(EventsController::COLORS)  %>
-      </div>
+      <%= f.label :color %>
+      <%= f.select :color, options_for_select(EventsController::COLORS)  %>
+
+
+      <form action="#" class="col s12">
+        <div class="file-field input-field">
+          <div class="btn">
+            <span>Event Image</span>
+            <%= f.file_field :picture %>
+          </div>
+          <div class="file-path-wrapper">
+            <input class="file-path validate" type="text">
+          </div>
+        </div>
+      </form>
 
       <div class="actions">
-        <%= f.submit @value, class: "center btn red" %>
+        <%= f.submit @value, class: "center btn" %>
       </div>
 
     <% end %>
