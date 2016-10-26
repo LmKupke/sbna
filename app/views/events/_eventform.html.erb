@@ -1,0 +1,42 @@
+<div class="row">
+  <div class="col s10 offset-s1">
+
+    <%= form_for @event, url: @url do |f| %>
+
+      <div class="input-field">
+        <%= f.label :title %><br />
+        <%= f.text_field :title, autofocus: true %>
+      </div>
+
+      <div class="input-field">
+        <%= f.label :location %><br />
+        <%= f.text_field :location %>
+      </div>
+
+      <div class="input-field">
+        <%= f.label :description %><br /><br />
+        <%= f.text_area :description %>
+      </div>
+
+      <div class="input-field">
+        <%= f.label :start %>
+        <%= f.text_field :start, id: "datetimepicker" %>
+      </div>
+
+      <div class="input-field">
+        <%= f.label :end %>
+        <%= f.text_field :end, id: "datetimepicker2" %>
+      </div>
+
+      <div class="input-field">
+        <%= f.label :color %><br />
+        <%= f.select :color, options_for_select(EventsController::COLORS)  %>
+      </div>
+
+      <div class="actions">
+        <%= f.submit "Create Event" %>
+      </div>
+
+    <% end %>
+  </div>
+</div>

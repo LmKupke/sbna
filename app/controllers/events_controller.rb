@@ -13,9 +13,10 @@ class EventsController < ApplicationController
 
   def new
     if current_user.admin? == false
-      redirect_to events_path
+      redirect_to(:back)
     else
       @event = Event.new
+      @url = events_path
     end
   end
 
@@ -25,8 +26,17 @@ class EventsController < ApplicationController
     if @event.save
       redirect_to event_path(@event.id)
     else
-      flash[:alert] = "Date can not be in the past. If event is today start time can not be in the past"
+      # flash[:alert] = "Date can not be in the past. If event is today start time can not be in the past"
       redirect_to new_event_path
+    end
+  end
+
+  def edit
+    if current_user.admin? == false
+      redirect_to(:back)
+    else
+      @event = Event.new
+      @url = events_path
     end
   end
 

@@ -46,7 +46,8 @@ $(document).ready(function(){
     },
     eventClick: function(event) {
       if (event.id) {
-        window.location.href = (window.location.href + "/" + event.id);
+        var pos = window.location.href.search("calendar");
+        window.location.href = (window.location.href.slice(0,pos) + "/events/" + event.id);
         return false;
       }
     }
