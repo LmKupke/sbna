@@ -89,7 +89,10 @@ a.collapsible-header.navside {
 #dropdown2 {
   border-radius: black;
 }
-
+.dropdown-content.active li.topnav-drop a:hover {
+  background-color: $navmaincolor;
+  color: $maincolor;
+}
 
 div#topbanner img {
   // background-image: image-url("St-BotolphBanner1_01.gif");

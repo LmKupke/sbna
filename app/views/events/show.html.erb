@@ -1,4 +1,4 @@
-<div class="row">
+<div class="row" id="event-show-actions">
 <% if user_signed_in? %>
   <% if current_user.admin? %>
     <%= link_to event_path(@event), method: :delete, class: "right btn-floating btn-large waves-effect waves-light red", id: "event-show-delete-button" do %>
@@ -9,14 +9,45 @@
     <% end %>
   <% end %>
 <% end %>
+</div>
 
 <div class="container">
-  <div class="">
-    <%= image_tag(@event.picture, size: "300") %>
+  <div class="row">
+    <div class="col s12 m4 l4">
+      <div class="event-info">
+        <div class="icon fa fa-map-marker"></div>
+        <div class="info">
+          <%= @event.location %>
+        </div>
+      </div>
+    </div>
+    <div class="col s12 m4 l4">
+      <div class="event-info">
+        <div class="icon fa fa-calendar"></div>
+        <div class="info">
+          <ul>
+            <li>Starts <strong><%= @event.start.strftime('%m/%d/%Y @ %I:%M%p') %></strong></li>
+            <li>Ends <strong><%= @event.end.strftime('%m/%d/%Y @ %I:%M%p') %></strong></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="col s12 m4 l4">
+      <div class="event-info">
+        <div class="icon fa fa-users"></div>
+        <div class="info">
+          X Spots Left!
+        </div>
+      </div>
+    </div>
   </div>
-  <%= @event.title %>
-  From <%= @event.start.strftime('%m/%d/%Y %I:%M%p') %> to <%= @event.end.strftime('%m/%d/%Y %I:%M%p') %>
 </div>
+<div class="col s12 m12 l12 divider"></div>
+<div class="">
+  <!-- <%= image_tag(@event.picture, size: "300") %> -->
+</div>
+<%= @event.title %>
+
 
 <%= @event.description %>
 </div>

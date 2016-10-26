@@ -18,6 +18,7 @@
 //= require fullcalendar/gcal
 //= require datetimepicker
 
+
 $(document).ready(function(){
   $(".button-collapse").sideNav();
   $('#datetimepicker').datetimepicker();
