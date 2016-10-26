@@ -70,9 +70,23 @@ div.nav-wrapper a:hover{
   border-bottom: solid black;
 }
 
+a.navside.drop {
+  background-color: $maincolor;
+  color: $navmaincolor;
+}
+
+
 a.navside.drop:hover {
   background-color: $navmaincolor;
   color: $maincolor;
+}
+
+a.collapsible-header.navside:hover {
+  background-color: $navmaincolor;
+}
+
+a.collapsible-header.navside {
+  border-bottom: solid black;
 }
 
 
