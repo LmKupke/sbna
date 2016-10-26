@@ -17,6 +17,7 @@ class EventsController < ApplicationController
     else
       @event = Event.new
       @url = events_path
+      @value = "Create Event"
     end
   end
 
@@ -37,6 +38,19 @@ class EventsController < ApplicationController
     else
       @event = Event.new
       @url = events_path
+      @value = "Update Event"
+    end
+  end
+
+  def update
+    @event = Event.find(params["id"])
+    @event.assign_attributes(event_params)
+    @event.user = current_user
+    if @event.save
+      redirect_to event_path(@event)
+    else
+      flash[:alert] = "Please add values to each of the forms"
+      render :edit
     end
   end
 
