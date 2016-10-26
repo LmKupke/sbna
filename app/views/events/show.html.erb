@@ -1,7 +1,10 @@
 <div class="row">
 <% if user_signed_in? %>
   <% if current_user.admin? %>
-    <%= link_to edit_event_path(@event), class: "right btn-floating btn-large waves-effect waves-light red" do %>
+    <%= link_to event_path(@event), method: :delete, class: "right btn-floating btn-large waves-effect waves-light red", id: "event-show-delete-button" do %>
+      <i class="material-icons">delete</i>
+    <% end %>
+    <%= link_to edit_event_path(@event), class: "right btn-floating btn-large waves-effect waves-light green", id: "event-show-edit-button" do %>
       <i class="material-icons">mode_edit</i>
     <% end %>
   <% end %>

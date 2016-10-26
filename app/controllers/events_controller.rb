@@ -12,8 +12,8 @@ class EventsController < ApplicationController
   end
 
   def new
-    if current_user.admin? == false
-      redirect_to(:back)
+    if current_user == nil || current_user.admin? == false
+      redirect_to root_path
     else
       @event = Event.new
       @url = events_path
@@ -33,8 +33,8 @@ class EventsController < ApplicationController
   end
 
   def edit
-    if current_user.admin? == false
-      redirect_to(:back)
+    if current_user == nil || current_user.admin? == false
+      redirect_to root_path
     else
       @event = Event.new
       @url = events_path
@@ -51,6 +51,17 @@ class EventsController < ApplicationController
     else
       flash[:alert] = "Please add values to each of the forms"
       render :edit
+    end
+  end
+
+  def destroy
+    @event = Event.find(params["id"])
+    if current_user != @event.organizer
+      flash[:alert] = "Sorry you're not the event organizer"
+      redirect_to newsfeeds_path
+    else
+      @event.destroy
+      redirect_to events_path
     end
   end
 
