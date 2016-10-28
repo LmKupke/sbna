@@ -23,7 +23,8 @@ $(document).ready(function(){
   $(".button-collapse").sideNav();
   $('#datetimepicker').datetimepicker();
   $('#datetimepicker2').datetimepicker();
-  // $(".dropdown-button.navside").dropdown();
+  $(".dropdown-button.navside").dropdown({hover: true});
+  $(".dropdown-button").dropdown({hover: true});
   $('#calendar').fullCalendar({
     header: {
       left: 'today prev, next',

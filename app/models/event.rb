@@ -7,4 +7,6 @@ class Event < ActiveRecord::Base
   validates :start, presence: true
   validates :end, presence: true,  date: { after_or_equal_to:  :start}
   validates :location, presence: true
+  validates :picture, presence: true
+
 end

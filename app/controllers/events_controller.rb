@@ -52,8 +52,8 @@ class EventsController < ApplicationController
     if @event.save
       redirect_to event_path(@event)
     else
-      flash[:alert] = "Please add values to each of the forms"
-      render :edit
+      flash[:multiple_error] = @event.errors.full_messages
+      redirect_to edit_event_path(@event)
     end
   end
 

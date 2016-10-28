@@ -12,5 +12,6 @@ FactoryGirl.define do
     city "Boston"
     state "MA"
     other_address "Unit 2"
+    role "member"
   end
 end
