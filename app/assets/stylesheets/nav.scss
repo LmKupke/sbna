@@ -8,14 +8,27 @@ $navmaincolor: #D7D7D7;
 #search:focus {
   background-color: $maincolor;
 }
+
+
+ul.dropdown-content.active li {
+  a {
+    color: $navmaincolor;
+    background-color: $maincolor;
+    font-size: 14px;
+  }
+}
+
+ul.dropdown-content {
+  background-color: rgba(255, 255, 255, 0);
+}
+
+.dropdown-content.active li:hover {
+  background-color: rgba(255, 255, 255, 0);
+}
+
 nav .input-field label i {
   color: $navmaincolor;
   transition: color .3s;
-}
-
-.dropdown-content li > a, .dropdown-content li > span {
-  color: $navmaincolor;
-  background-color: $maincolor;
 }
 
 .dropdown-content .active li  a, .dropdown-content li > span {
@@ -48,10 +61,27 @@ div.nav-wrapper a:hover{
   font-size: 28px;
   border-bottom: solid black;
 }
-a.navside:hover {
+
+a.navside.drop {
   background-color: $maincolor;
-  color: white;
+  color: $navmaincolor;
 }
+
+
+a.navside.drop:hover {
+  background-color: $navmaincolor;
+  color: $maincolor;
+}
+
+a.collapsible-header.navside:hover {
+  background-color: $navmaincolor;
+}
+
+a.collapsible-header.navside {
+  border-bottom: solid black;
+}
+
+
 #mobile-demo {
   background-color: $maincolor;
 }
@@ -59,7 +89,10 @@ a.navside:hover {
 #dropdown2 {
   border-radius: black;
 }
-
+.dropdown-content.active li.topnav-drop a:hover {
+  background-color: $navmaincolor;
+  color: $maincolor;
+}
 
 div#topbanner img {
   // background-image: image-url("St-BotolphBanner1_01.gif");

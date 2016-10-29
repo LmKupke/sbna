@@ -18,9 +18,9 @@
   <div class="col s3" id="eventColumn">
     <% @upcomingEvents.each do |event| %>
       <div class="col s12 m12">
-        <div class="card">
+        <div class="card hoverable">
           <div class="card-image">
-            <img src="http://lorempixel.com/100/190/nature/6" height="100px" width="100px">
+            <img src="<%= event.picture %>" height="200px" width="200px">
             <span class="card-title"><%= event.title  %></span>
           </div>
           <div class="card-content">

@@ -13,6 +13,9 @@ gem 'bootstrap-sass'
 gem 'bootstrap'
 gem 'simple_form'
 gem 'date_validator', '~> 0.9.0'
+gem "carrierwave"
+gem "font-awesome-rails"
+gem 'fog'
 
 group :development, :test do
   gem 'capybara'

@@ -10,4 +10,5 @@ Rails.application.routes.draw do
     resources :events, only: [:index,:new,:edit,:update]
   end
   resources :events, only: [:index,:show, :new, :create, :edit, :update, :destroy]
+  get 'calendar', controller: "events", action: "calendar"
 end

@@ -29,7 +29,13 @@ ActiveRecord::Migration.maintain_test_schema!
 RSpec.configure do |config|
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
   config.fixture_path = "#{::Rails.root}/spec/fixtures"
-
+  config.include Warden::Test::Helpers
+  config.before :suite do
+    Warden.test_mode!
+  end
+  config.after :each do
+    Warden.test_reset!
+  end
   # If you're not using ActiveRecord, or you'd prefer not to run each of your
   # examples within a transaction, remove the following line or assign false
   # instead of true.
@@ -61,4 +67,3 @@ require "valid_attribute"
 RSpec.configure do |config|
   config.include FactoryGirl::Syntax::Methods
 end
-

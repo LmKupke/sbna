@@ -3,15 +3,22 @@ class EventsController < ApplicationController
 
   end
 
+  def calendar
+    render "calendar"
+  end
+
   def show
     @event = Event.find(params["id"])
   end
 
   def new
-    if current_user.admin? == false
-      redirect_to events_path
+    if current_user == nil || current_user.admin? == false
+      redirect_to root_path
     else
       @event = Event.new
+      @url = events_path
+      @method = "post"
+      @value = "Create Event"
     end
   end
 
@@ -21,8 +28,44 @@ class EventsController < ApplicationController
     if @event.save
       redirect_to event_path(@event.id)
     else
-      flash[:alert] = "Date can not be in the past. If event is today start time can not be in the past"
+      flash[:multiple_error] =  @event.errors.full_messages
+      # flash[:alert] = "Date can not be in the past. If event is today start time can not be in the past"
       redirect_to new_event_path
+    end
+  end
+
+  def edit
+    if current_user == nil || current_user.admin? == false
+      redirect_to root_path
+    else
+      @event = Event.find(params["id"])
+      @url = event_path
+      @value = "Update Event"
+      @method = "patch"
+    end
+  end
+
+  def update
+    @event = Event.find(params["id"])
+    @event.assign_attributes(event_params)
+    @event.user = current_user
+    if @event.save
+      redirect_to event_path(@event)
+    else
+      flash[:multiple_error] = @event.errors.full_messages
+      redirect_to edit_event_path(@event)
+    end
+  end
+
+  def destroy
+    @event = Event.find(params["id"])
+    if current_user == nil || current_user.admin? == false
+      flash[:alert] = "Sorry you do not have those priviledges."
+      redirect_to root_path
+    else
+      flash[:success] = "You successfully deleted your event!"
+      @event.destroy
+      redirect_to calendar_path
     end
   end
 
@@ -43,6 +86,6 @@ class EventsController < ApplicationController
   private
 
   def event_params
-    params.require(:event).permit(:title, :location, :description, :start, :end, :color)
+    params.require(:event).permit(:title, :location, :description, :start, :end, :color, :picture)
   end
 end

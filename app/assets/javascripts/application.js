@@ -18,11 +18,13 @@
 //= require fullcalendar/gcal
 //= require datetimepicker
 
+
 $(document).ready(function(){
   $(".button-collapse").sideNav();
   $('#datetimepicker').datetimepicker();
   $('#datetimepicker2').datetimepicker();
-
+  $(".dropdown-button.navside").dropdown({hover: true});
+  $(".dropdown-button").dropdown({hover: true});
   $('#calendar').fullCalendar({
     header: {
       left: 'today prev, next',
@@ -46,7 +48,8 @@ $(document).ready(function(){
     },
     eventClick: function(event) {
       if (event.id) {
-        window.location.href = (window.location.href + "/" + event.id);
+        var pos = window.location.href.search("calendar");
+        window.location.href = (window.location.href.slice(0,pos) + "/events/" + event.id);
         return false;
       }
     }
