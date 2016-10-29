@@ -1,9 +1,9 @@
 require "rails_helper"
 
-feature "sign_up", %{
-  As an unathenticated user
-  I want to sign up for SBNA
-  So that I can access go to events
+feature "admin_creates_book", %{
+  As an authenticated admin
+  I want to create an event
+  So that others can see it
 } do
 
   context "as an admin user" do
