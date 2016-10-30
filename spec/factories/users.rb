@@ -13,5 +13,8 @@ FactoryGirl.define do
     state "MA"
     other_address "Unit 2"
     role "member"
+    profphoto do
+      File.open(File.join("#{Rails.root}/spec/support/images/photo.jpg"))
+    end
   end
 end

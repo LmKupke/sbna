@@ -26,7 +26,7 @@ class User < ActiveRecord::Base
   validates :city, presence: true
   validates :state, presence: true, inclusion: { in: STATES }
   validates :other_address, presence: false, allow_nil: true
-
+  mount_uploader :profphoto, ProfilePhotoUploader
   has_many :events
 
   def admin?

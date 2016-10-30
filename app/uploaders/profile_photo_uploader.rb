@@ -1,16 +1,17 @@
 # encoding: utf-8
 
-class EventPhotoUploader < CarrierWave::Uploader::Base
+class ProfilePhotoUploader < CarrierWave::Uploader::Base
 
   # Include RMagick or MiniMagick support:
   # include CarrierWave::RMagick
   # include CarrierWave::MiniMagick
+
+  # Choose what kind of storage to use for this uploader:
   if Rails.env.test?
     storage :file
   else
     storage :fog
   end
-  # Choose what kind of storage to use for this uploader:
   # storage :file
   # storage :fog
 
