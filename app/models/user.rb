@@ -27,8 +27,10 @@ class User < ActiveRecord::Base
   validates :state, presence: true, inclusion: { in: STATES }
   validates :other_address, presence: false, allow_nil: true
   mount_uploader :profphoto, ProfilePhotoUploader
-  has_many :events
 
+  has_many :events
+  has_many :attendees
+  
   def admin?
     role == "admin"
   end
