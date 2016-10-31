@@ -1,5 +1,21 @@
-<%= @user_info.fullname  %>
-<%= @user_info.phone_number %>
-<%= @user_info.full_address %>
-<%= image_tag(@user_info.profphoto) %>
-<%= link_to "Edit Profile", edit_user_registration_path %>
+<div class="row">
+<div class="col s12">
+  <%= link_to edit_user_registration_path, data: { position: "bottom", delay: "50", tooltip: "Edit profile" }, class: "right btn-floating btn-large waves-effect waves-light green btn tooltipped" do%>
+    <i class="material-icons">mode_edit</i>
+  <% end %>
+  <div class="col s4 picture">
+    <%= image_tag(@user_info.profphoto, size: "200") %>
+  </div>
+  <div class="col s7">
+    <div>
+      <%= @user_info.fullname  %>
+    </div>
+    <div>
+      <%= @user_info.phone_number %>
+    </div>
+    <div>
+    <%= @user_info.full_address %>
+    </div>
+  </div>
+</div>
+</div>

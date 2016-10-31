@@ -230,6 +230,7 @@ GEM
     globalid (0.3.7)
       activesupport (>= 4.1.0)
     i18n (0.7.0)
+    icalendar (2.4.1)
     inflecto (0.0.2)
     ipaddress (0.8.3)
     jquery-rails (4.2.1)
@@ -388,6 +389,7 @@ DEPENDENCIES
   fog
   font-awesome-rails
   fullcalendar-rails
+  icalendar
   jquery-rails
   launchy
   materialize-sass

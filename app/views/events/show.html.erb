@@ -1,10 +1,10 @@
 <div class="row" id="event-show-actions">
 <% if user_signed_in? %>
   <% if current_user.admin? %>
-    <%= link_to event_path(@event), method: :delete, class: "right btn-floating btn-large waves-effect waves-light red", id: "event-show-delete-button" do %>
+  <%= link_to event_path(@event), data: { position: "bottom", delay: "50", tooltip: "Delete Event" }, method: :delete,  class: "right btn-floating btn-large waves-effect waves-light red tooltipped", id: "event-show-delete-button" do %>
       <i class="material-icons">delete</i>
     <% end %>
-    <%= link_to edit_event_path(@event), class: "right btn-floating btn-large waves-effect waves-light green", id: "event-show-edit-button" do %>
+    <%= link_to edit_event_path(@event), data: { position: "bottom", delay: "50", tooltip: "Edit Event" }, class: "right btn-floating btn-large waves-effect waves-light green tooltipped", id: "event-show-edit-button" do %>
       <i class="material-icons">mode_edit</i>
     <% end %>
   <% end %>
@@ -44,10 +44,13 @@
 </div>
 <div class="col s12 m12 l12 divider"></div>
 <div class="">
-  <!-- <%= image_tag(@event.picture, size: "300") %> -->
+  <%= image_tag(@event.picture, size: "300") %>
 </div>
 <%= @event.title %>
 
 
 <%= @event.description %>
 </div>
+
+
+<%= link_to "Download to ICal",:controller => 'events', :action => :show, :format => :ics %>

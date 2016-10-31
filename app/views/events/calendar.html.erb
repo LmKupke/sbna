@@ -1,8 +1,8 @@
 <div class="row">
 <% if user_signed_in? %>
   <% if current_user.admin? %>
-    <%= link_to new_event_path, class: "right btn-floating btn-large waves-effect waves-light red" do %>
-      <i class="material-icons">add</i> 
+    <%= link_to new_event_path, data: { position: "bottom", delay: "50", tooltip: "Create Event" }, class: "right btn-floating btn-large waves-effect waves-light red tooltipped" do %>
+      <i class="material-icons">add</i>
     <% end %>
   <% end %>
 <% end %>
