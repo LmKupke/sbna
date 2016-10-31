@@ -16,6 +16,7 @@ gem 'date_validator', '~> 0.9.0'
 gem "carrierwave"
 gem "font-awesome-rails"
 gem 'fog'
+gem 'icalendar'
 
 group :development, :test do
   gem 'capybara'
@@ -24,6 +25,7 @@ group :development, :test do
   gem 'pry-rails'
   gem 'shoulda'
   gem 'valid_attribute'
+  gem "dotenv-rails"
 end
 
 group :test do

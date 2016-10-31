@@ -35,7 +35,7 @@ Rails.application.configure do
   # Checks for improperly declared sprockets dependencies.
   # Raises helpful error messages.
   config.assets.raise_runtime_errors = true
-
+  PUBLIC_URL = "http://localhost:3000/"
   config.action_mailer.smtp_settings = {
     address: "localhost",
     port: 1025

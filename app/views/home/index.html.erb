@@ -1,10 +1,10 @@
 <div class="row">
-  <div class="col s9">
-    <h2>The St. Botolph Neighborhood</h2>
+  <div class="col s8 offset-s1">
     <p>The St. Botolph District was developed in the 1850's as a residential neighborhood and is a historical site protected by the St. Botolph Historic District Commission. It consists of 8 blocks east to west, and its boundaries are Huntington Avenue, Copley Place, the Southwest Corridor Park and Massachusetts Avenue. Because of its Back Bay/Prudential location closely bordering the South End (via the Southwest Corridor Park), its residents enjoy the benefits of easy access to many thriving commercial areas while enjoying the quiet ambiance of a comfortable residential neighborhood.</p>
     <p>The St. Botolph neighborhood is known for the diversity of both its residents and architecture, and it has continued that diversity while maintaining its historic character. Artists, musicians, professionals, and families live in historic brownstones and modern condominiums. Owners and renters live side by side and actively participate in protecting the neighborhood’s visual beauty and residential character.</p>
 
-    <h2>The Saint Botolph Neighborhood Association</h2>
+    <div class="divider"></div>
+    <h4>The Saint Botolph Neighborhood Association</h4>
     We are a volunteer community organization open to all residents.
 
     <strong>We strive to:</strong>
@@ -24,8 +24,10 @@
             <span class="card-title"><%= event.title  %></span>
           </div>
           <div class="card-content">
-            Start: <%= event.start.strftime("%m/%d/%Y at %I:%M%p") %>
-            End: <%= event.end.strftime("%m/%d/%Y at %I:%M%p") %>
+            <ul>
+              <li>Start: <%= event.start.strftime("%m/%d/%Y at %I:%M%p") %></li>
+              <li>End: <%= event.end.strftime("%m/%d/%Y at %I:%M%p") %></li>
+            </ul>
           </div>
           <div class="card-action">
             <%= link_to "Link to Event", event_path(event) %>
