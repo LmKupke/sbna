@@ -36,7 +36,7 @@
       <div class="event-info">
         <div class="icon fa fa-users"></div>
         <div class="info">
-          X Spots Left!
+          <%= @event.max_participants %> spots!
         </div>
       </div>
     </div>
@@ -52,5 +52,17 @@
 <%= @event.description %>
 </div>
 
+<% if @userattending.empty? %>
+  <div>
+    Seems like your not attending this event :( !
 
+    This is the form to attending!
+  </div>
+<% else %>
+  <div>
+    You are attending this event! :)
+
+    This the form to update your attendance. (Cancel or Update)
+  </div>
+<% end %>
 <%= link_to "Download to ICal",:controller => 'events', :action => :show, :format => :ics %>

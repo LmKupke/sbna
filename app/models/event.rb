@@ -7,12 +7,11 @@ class Event < ActiveRecord::Base
   validates :start, presence: true
   validates :end, presence: true,  date: { after_or_equal_to:  :start}
   validates :location, presence: true
-  validates :picture, presence: true
   validates :max_participants, presence: true, numericality: { only_integer: true, greater_than: 0 }
 
   belongs_to :user
   has_many :attendees
-  
+
   def to_ics
     event = Icalendar::Event.new
     event.dtstart = self.start.strftime("%Y%m%dT%H%M%S")
