@@ -94,13 +94,16 @@ a.collapsible-header.navside {
   color: $maincolor;
 }
 
-div#topbanner img {
+div#topbanner {
+  background-color: #D7D7D7;
+  img {
   // background-image: image-url("St-BotolphBanner1_01.gif");
-  background-repeat: no-repeat;
-  background-size: cover;
-  height: auto;
-  width: 100%;
-  padding: 0;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: auto;
+    width: 100%;
+    padding: 0;
+  }
 }
 
 .button-collapse{

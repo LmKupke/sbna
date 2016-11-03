@@ -17,9 +17,8 @@ ActiveRecord::Schema.define(version: 20161031214127) do
   enable_extension "plpgsql"
 
   create_table "attendees", force: :cascade do |t|
-    t.integer  "event_id",               null: false
-    t.integer  "user_id",                null: false
-    t.integer  "guests",     default: 0, null: false
+    t.integer  "event_id",   null: false
+    t.integer  "user_id",    null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
