@@ -16,7 +16,6 @@ label#event_start_label {
 #event-show-actions{
   margin: 0;
   top: 180px;
-  padding-top: 120px;
 }
 
 .event-info .icon {
@@ -37,10 +36,7 @@ label#event_start_label {
 #card-image-spot  {
   padding-left: 0px;
   padding-right: 0px;
-
-  // img {
-  //   width: 100%;
-  // }
+  display: block;
 
 }
 img#event-show-image {
@@ -51,6 +47,7 @@ img#event-show-image {
 #event-card {
   background-color: #EFF3F5;
   background-size: contain;
+  margin-bottom: 0px;
 }
 
 .event-date-day-card {
@@ -84,4 +81,12 @@ img#event-show-image {
 #event-abbr-date-card {
   padding-left: 0px;
   margin-bottom: 10px;
+}
+
+.page-footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 75px;
 }

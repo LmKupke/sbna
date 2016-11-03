@@ -1,21 +1,21 @@
-<div class="fixed-action-btn" id="event-show-actions">
-<% if user_signed_in? %>
-  <% if current_user.admin? %>
-  <%= link_to event_path(@event), data: { position: "bottom", delay: "50", tooltip: "Delete Event", confirm: "Are you sure you want to delete this event?" }, method: :delete,  class: "right btn-floating btn-large waves-effect waves-light red tooltipped", id: "event-show-delete-button" do %>
-      <i class="material-icons">delete</i>
-    <% end %>
-    <%= link_to edit_event_path(@event), data: { position: "bottom", delay: "50", tooltip: "Edit Event" }, class: "right btn-floating btn-large waves-effect waves-light green tooltipped", id: "event-show-edit-button" do %>
-      <i class="material-icons">mode_edit</i>
-    <% end %>
-  <% end %>
-<% end %>
-</div>
 <div class="row" id="event-card">
   <div class="horizontal-card">
     <div class="col s12 l9" id="card-image-spot">
       <%= image_tag(@event.picture, id: "event-show-image") %>
     </div>
     <div class="card-content col s12 l3">
+      <div class="" id="event-show-actions">
+        <% if user_signed_in? %>
+          <% if current_user.admin? %>
+          <%= link_to event_path(@event), data: { position: "bottom", delay: "50", tooltip: "Delete Event", confirm: "Are you sure you want to delete this event?" }, method: :delete,  class: "right btn-floating btn-large waves-effect waves-light red tooltipped", id: "event-show-delete-button" do %>
+              <i class="material-icons">delete</i>
+            <% end %>
+            <%= link_to edit_event_path(@event), data: { position: "bottom", delay: "50", tooltip: "Edit Event" }, class: "right btn-floating btn-large waves-effect waves-light green tooltipped", id: "event-show-edit-button" do %>
+              <i class="material-icons">mode_edit</i>
+            <% end %>
+          <% end %>
+        <% end %>
+      </div>
       <div class="cool">
         <div class="col l12 offset-l1 m12" id="date-title-container">
           <div class="col m5 l12 hide-on-small-only" id="event-abbr-date-card">
@@ -25,12 +25,69 @@
           <div class="col m6 l12" id="event-title-show">
             <%= @event.title %>
           </div>
+
         </div>
       </div>
     </div>
   </div>
 </div>
 <div class="hide-on-med-and-down">
+  <% if user_signed_in? %>
+    <% if @userattending %>
+      <div>
+      <%= link_to "Register", new_event_attendee_path(@event), class: "right green btn-large event-reg-button" %>
+      </div>
+    <% else %>
+      <div>
+        <%= link_to "Cancel Attendance", "#", class: "right red btn-large" %>
+        You are attending this event! :)
+        This the form to update your attendance. (Cancel or Update)
+      </div>
+    <% end %>
+    <%= link_to("Download to ICal", :controller => 'events', :action => :show, :format => :ics) %>
+  <% end %>
+</div>
+
+<div class="container">
+  <div class="row">
+    <div class="description">
+    </div>
+    <div class="col s12 m4 l4 event-info">
+      <div class="fa fa-calendar hide-on-med-and-up"></div>
+      Date and Time
+      <div class="info">
+          Starts <strong><%= @event.start.strftime('%m/%d/%Y @ %I:%M%p') %></strong>
+          Ends <strong><%= @event.end.strftime('%m/%d/%Y @ %I:%M%p') %></strong>
+      </div>
+    </div>
+    <div class="col s12 m4 l4 event-info">
+      <div class="fa fa-map-marker hide-on-med-and-up"></div>
+      <div class="info">
+        <%= @event.location %>
+      </div>
+    </div>
+    <div class="col s12 m4 l4 event-info">
+      <div class="fa fa-users hide-on-med-and-up"></div>
+      <div class="info">
+        <%= @event.max_participants %> Availability!
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="col s12 m12 l12 divider"></div>
+<%= @event.description %>
+<div class="hide-on-large-only">
+  <footer class="page-footer">
+   <div class="container">
+     <div class="row">
+       <div class="col s12">
+         <p class="grey-text text-lighten-4 center-align">Free</p>
+       </div>
+      </div>
+   </div>
+ </footer>
+
   <% if user_signed_in? %>
     <% if @userattending %>
       <div>
@@ -46,55 +103,3 @@
     <%= link_to("Download to ICal", :controller => 'events', :action => :show, :format => :ics) %>
   <% end %>
 </div>
-
-<div class="container">
-  <div class="row">
-    <div class="col l12 s12 m12">
-      <div class="col s12 m4 l4 event-info">
-        <div class="icon fa fa-map-marker"></div>
-        <div class="info">
-          <%= @event.location %>
-        </div>
-      </div>
-      <div class="col s12 m4 l4 event-info">
-        <div class="icon fa fa-calendar"></div>
-        <div class="info">
-          <ul>
-            <li>Starts <strong><%= @event.start.strftime('%m/%d/%Y @ %I:%M%p') %></strong></li>
-            <li>Ends <strong><%= @event.end.strftime('%m/%d/%Y @ %I:%M%p') %></strong></li>
-          </ul>
-        </div>
-      </div>
-      <div class="col s12 m4 l4 event-info">
-        <div class="icon fa fa-users"></div>
-        <div class="info">
-          <%= @event.max_participants %> spots!
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<div class="col s12 m12 l12 divider"></div>
-<div class="">
-</div>
-<%= @event.title %>
-
-
-<%= @event.description %>
-</div>
-
-<% if user_signed_in? %>
-  <% if @userattending %>
-    <div>
-    <%= link_to "Register", new_event_attendee_path(@event), class: "green btn" %>
-    </div>
-  <% else %>
-    <div>
-      <%= link_to "Cancel Attendance", "#", class: "red btn" %>
-      You are attending this event! :)
-      This the form to update your attendance. (Cancel or Update)
-    </div>
-  <% end %>
-  <%= link_to("Download to ICal", :controller => 'events', :action => :show, :format => :ics) %>
-<% end %>
