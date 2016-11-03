@@ -2,7 +2,7 @@
 <% if user_signed_in? %>
   <% if current_user.admin? %>
     <div class="fixed-action-btn">
-      <%= link_to new_event_path, data: { position: "bottom", delay: "50", tooltip: "Create Event" }, class: "right btn-floating btn-large waves-effect waves-light red tooltipped" do %>
+      <%= link_to new_event_path, data: { position: "bottom", delay: "50", tooltip: "Create Event" }, class: "right btn-floating btn-large waves-effect waves-light red darken-4 tooltipped" do %>
         <i class="material-icons">add</i>
       <% end %>
     </div>
