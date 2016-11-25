@@ -32,16 +32,13 @@
 </div>
 <div class="hide-on-med-and-down row">
   <% if user_signed_in? %>
-    <% if @userattending %>
+    <% if @userattending.empty? %>
         <%= link_to "Register", new_event_attendee_path(@event), class: "col l3 offset-l9 green btn-large event-reg-button" %>
     <% else %>
         <%= link_to "Cancel Attendance", "#", class: "right red btn-large" %>
-        You are attending this event! :)
-        <%= link_to "Update Attendace", "#", class: "right yellow btn-large" %>
-        This the form to update your attendance. (Cancel or Update)
+        <%= link_to "Update Attendace", "#", class: "right green btn-large" %>
       </div>
     <% end %>
-    <!-- <%= link_to("Download to ICal", :controller => 'events', :action => :show, :format => :ics) %> -->
   <% end %>
 </div>
 
@@ -60,7 +57,7 @@
           <% else %>
             <div>
              <%= link_to "Cancel Attendance", "#", class: "red btn" %>
-             <%= link_to "Update", "#", class: "orange btn" %>
+             <%= link_to "Update", "#", class: "green btn" %>
             </div>
           <% end %>
         <% end %>
