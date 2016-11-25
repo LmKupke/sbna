@@ -18,89 +18,53 @@
       </div>
       <div class="cool">
         <div class="col l12 offset-l1 m12" id="date-title-container">
-          <div class="col m5 l12 hide-on-small-only" id="event-abbr-date-card">
+          <div class="col m3 l12 hide-on-small-only" id="event-abbr-date-card">
             <p class="event-date-month-card"><%= @event.start.strftime('%b') %></p>
             <p class="event-date-day-card"><%= @event.start.strftime('%d') %></p>
           </div>
-          <div class="col m6 l12" id="event-title-show">
+          <div class="col m8 l12" id="event-title-show">
             <%= @event.title %>
           </div>
-
         </div>
       </div>
     </div>
   </div>
 </div>
-<div class="hide-on-med-and-down">
+<div class="hide-on-med-and-down row">
   <% if user_signed_in? %>
     <% if @userattending %>
-      <div>
-      <%= link_to "Register", new_event_attendee_path(@event), class: "right green btn-large event-reg-button" %>
-      </div>
+        <%= link_to "Register", new_event_attendee_path(@event), class: "col l3 offset-l9 green btn-large event-reg-button" %>
     <% else %>
-      <div>
         <%= link_to "Cancel Attendance", "#", class: "right red btn-large" %>
         You are attending this event! :)
+        <%= link_to "Update Attendace", "#", class: "right yellow btn-large" %>
         This the form to update your attendance. (Cancel or Update)
       </div>
     <% end %>
-    <%= link_to("Download to ICal", :controller => 'events', :action => :show, :format => :ics) %>
+    <!-- <%= link_to("Download to ICal", :controller => 'events', :action => :show, :format => :ics) %> -->
   <% end %>
 </div>
 
-<div class="container">
-  <div class="row">
-    <div class="description">
-    </div>
-    <div class="col s12 m4 l4 event-info">
-      <div class="fa fa-calendar hide-on-med-and-up"></div>
-      Date and Time
-      <div class="info">
-          Starts <strong><%= @event.start.strftime('%m/%d/%Y @ %I:%M%p') %></strong>
-          Ends <strong><%= @event.end.strftime('%m/%d/%Y @ %I:%M%p') %></strong>
-      </div>
-    </div>
-    <div class="col s12 m4 l4 event-info">
-      <div class="fa fa-map-marker hide-on-med-and-up"></div>
-      <div class="info">
-        <%= @event.location %>
-      </div>
-    </div>
-    <div class="col s12 m4 l4 event-info">
-      <div class="fa fa-users hide-on-med-and-up"></div>
-      <div class="info">
-        <%= @event.max_participants %> Availability!
+<%= render "eventshowinfo" %>
+
+
+<% if @showfooter %>
+  <div class="hide-on-large-only">
+    <div class="col s12">
+      <div class="center-align">
+        <% if user_signed_in? %>
+          <% if @userattending.empty? %>
+            <div>
+              <%= link_to "Register", new_event_attendee_path(@event), class: "green btn" %>
+            </div>
+          <% else %>
+            <div>
+             <%= link_to "Cancel Attendance", "#", class: "red btn" %>
+             <%= link_to "Update", "#", class: "orange btn" %>
+            </div>
+          <% end %>
+        <% end %>
       </div>
     </div>
   </div>
-</div>
-
-<div class="col s12 m12 l12 divider"></div>
-  <%= @event.description %>
-<div class="hide-on-large-only">
-  <footer class="page-footer" id="event-page-footer">
-    <div class="container">
-      <div class="row">
-        <div class="col s12">
-          <p class="grey-text text-lighten-4 center-align" id="price-footer-event-show">Free</p>
-        </div>
-        <div class="col s12 center-align">
-         <% if user_signed_in? %>
-           <% if @userattending %>
-             <div>
-             <%= link_to "Register", new_event_attendee_path(@event), class: "green btn" %>
-             </div>
-           <% else %>
-             <div>
-               <%= link_to "Cancel Attendance", "#", class: "red btn" %>
-               You are attending this event! :)
-               This the form to update your attendance. (Cancel or Update)
-             </div>
-           <% end %>
-           <!-- <%= link_to("Download to ICal", :controller => 'events', :action => :show, :format => :ics) %> -->
-         <% end %>
-        </div>
-      </div>
-    </div>
-  </footer>
-</div>
+<% end %>

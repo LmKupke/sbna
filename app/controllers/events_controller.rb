@@ -9,8 +9,8 @@ class EventsController < ApplicationController
 
   def show
     @event = Event.find(params["id"])
-
     @userattending = Attendee.where(event_id: @event, user_id: current_user)
+    @showfooter = true
 
     respond_to do |wants|
       wants.html
