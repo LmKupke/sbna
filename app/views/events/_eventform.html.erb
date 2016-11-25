@@ -28,11 +28,17 @@
         <%= f.text_field :end, id: "datetimepicker2" %>
       </div>
 
-      <%= f.label :color %>
-      <%= f.select :color, options_for_select(EventsController::COLORS)  %>
+      <div class="input-field col s6" style="padding-left: 0px;">
+        <%= f.label :max_participants, style: "left: 0px;" %>
+        <%= f.number_field :max_participants, minimum: 1 %>
+      </div>
 
+      <div class="col s6">
+        <%= f.label :color %>
+        <%= f.select :color, options_for_select(EventsController::COLORS)  %>
+      </div>
 
-      <div class="file-field input-field">
+      <div class="file-field input-field col s12" style="padding-left: 0px;">
         <div class="btn">
           <span>Event Image</span>
           <%= f.file_field :picture %>
@@ -42,8 +48,8 @@
         </div>
       </div>
 
-      <div class="actions">
-        <%= f.submit @value, class: "btn" %>
+      <div class="actions col s12">
+        <%= f.submit @value, class: "btn right" %>
       </div>
 
     <% end %>

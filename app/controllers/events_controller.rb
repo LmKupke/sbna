@@ -9,6 +9,9 @@ class EventsController < ApplicationController
 
   def show
     @event = Event.find(params["id"])
+    @userattending = Attendee.where(event_id: @event, user_id: current_user)
+    @showfooter = true
+
     respond_to do |wants|
       wants.html
       wants.ics do
@@ -95,6 +98,6 @@ class EventsController < ApplicationController
   private
 
   def event_params
-    params.require(:event).permit(:title, :location, :description, :start, :end, :color, :picture)
+    params.require(:event).permit(:title, :location, :description, :start, :end, :color, :picture, :max_participants)
   end
 end

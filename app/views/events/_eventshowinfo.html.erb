@@ -1,0 +1,32 @@
+<div class="container">
+  <div class="row">
+    <div class="event-info">
+      <div class="col s8 description">
+        <h5 class="event-date-month-card">description</h5>
+        <%= @event.description %>
+      </div>
+      <div class="col s4 details">
+        <div class="date">
+          <h5 class="event-date-month-card">Date and Time</h5>
+          <ul>
+            <li><strong><%= @event.start.strftime('%a, %b %d, %Y, %I:%M%p') %></strong></li>
+            <li><strong><%= @event.end.strftime('%a, %b %d, %Y, %I:%M%p') %></strong></li>
+            <li><%= link_to("Download to ICal", :controller => 'events', :action => :show, :format => :ics) %></li>
+          </ul>
+        </div>
+        <div class="location">
+          <h5 class="event-date-month-card">Location</h5>
+          <%= @event.location %>
+        </div>
+        <div class="availabilty">
+          <h5 class="event-date-month-card">Availabilty</h5>
+          Blank spots left of <%= @event.max_participants %>
+        </div>
+        <div class="price">
+          <h5 class="event-date-month-card">Price</h5>
+          Price variable logic
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
