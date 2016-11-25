@@ -33,7 +33,8 @@
 <div class="hide-on-med-and-down row">
   <% if user_signed_in? %>
     <% if @userattending.empty? %>
-        <%= link_to "Register", new_event_attendee_path(@event), class: "col l3 offset-l9 green btn-large event-reg-button" %>
+        <%= link_to "Register", new_event_attendee_path(@event), class: "col l3 offset-l9 green btn-large event-reg-button"%>
+
     <% else %>
         <%= link_to "Cancel Attendance", "#", class: "right red btn-large" %>
         <%= link_to "Update Attendace", "#", class: "right green btn-large" %>
