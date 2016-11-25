@@ -7,6 +7,7 @@ FactoryGirl.define do
     add_attribute :end, DateTime.now + 1.hour
     allDay false
     color "Green"
+    max_participants 20
     picture do
       File.open(File.join("#{Rails.root}/spec/support/images/photo.jpg"))
     end

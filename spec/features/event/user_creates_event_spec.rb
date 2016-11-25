@@ -22,6 +22,8 @@ feature "admin_creates_book", %{
       fill_in "Description", with: "This is a test event"
       fill_in('event[start]', with: DateTime.now)
       fill_in('event[end]', with: DateTime.now + 1.hour)
+      fill_in('event[max_participants]', with: 10)
+
       attach_file 'event[picture]', "#{Rails.root}/spec/support/images/photo.jpg"
         select('Black', :from => 'Color')
       click_button "Create Event"
@@ -34,6 +36,7 @@ feature "admin_creates_book", %{
       fill_in "Description", with: "This is a test event"
       fill_in('event[start]', with: DateTime.now)
       fill_in('event[end]', with: DateTime.now + 1.hour)
+      fill_in('event[max_participants]', with: 10)
       attach_file 'event[picture]', "#{Rails.root}/spec/support/images/photo.jpg"
         select('Black', :from => 'Color')
       click_button "Create Event"
