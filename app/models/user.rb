@@ -37,8 +37,8 @@ class User < ActiveRecord::Base
     admin
   end
 
-  def role?(userrole)
-    role == userrole
+  def role?
+    role
   end
 
   def fullname
