@@ -9,7 +9,8 @@ class User < ActiveRecord::Base
     MD MA MI MN MS MO MT NE NV NH NJ NM NY NC ND MP OH OK OR PW PA PR RI SC
     SD TN TX UT VT VI VA WA WV WI WY AE AA AP
   )
-
+  validates :role, presence: true
+  validates :role, presence: true
   validates :first_name, presence: true
   validates :last_name, presence: true
   validates :role, presence: true, inclusion: { in: ["member", "admin", "superadmin"]}
