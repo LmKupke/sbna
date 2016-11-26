@@ -18,6 +18,7 @@ gem "font-awesome-rails"
 gem 'fog'
 gem 'icalendar'
 gem 'rails_admin', '~> 1.0'
+gem "cancancan"
 
 group :development, :test do
   gem 'capybara'

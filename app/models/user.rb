@@ -12,7 +12,7 @@ class User < ActiveRecord::Base
 
   validates :first_name, presence: true
   validates :last_name, presence: true
-  validates :role, presence: true, inclusion: { in: ["member", "admin"]}
+  validates :role, presence: true, inclusion: { in: ["member", "admin", "superadmin"]}
   validates :email,
    presence: true,
    allow_nil: false,
@@ -33,7 +33,11 @@ class User < ActiveRecord::Base
   has_many :events, through: :attendees
 
   def admin?
-    role == "admin"
+    admin
+  end
+
+  def role?(userrole)
+    role == userrole
   end
 
   def fullname
