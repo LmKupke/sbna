@@ -37,7 +37,7 @@
     </li>
     <% if current_user.admin? %>
       <li>
-        <%= link_to("Admin Section", admin_users_path,
+        <%= link_to("Admin Section", rails_admin_path,
         class: "navside") %>
       </li>
     <% end %>

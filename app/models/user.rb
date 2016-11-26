@@ -9,9 +9,11 @@ class User < ActiveRecord::Base
     MD MA MI MN MS MO MT NE NV NH NJ NM NY NC ND MP OH OK OR PW PA PR RI SC
     SD TN TX UT VT VI VA WA WV WI WY AE AA AP
   )
-
+  validates :role, presence: true
+  validates :role, presence: true
   validates :first_name, presence: true
   validates :last_name, presence: true
+  validates :role, presence: true, inclusion: { in: ["member", "admin", "superadmin"]}
   validates :email,
    presence: true,
    allow_nil: false,
@@ -28,11 +30,15 @@ class User < ActiveRecord::Base
   validates :other_address, presence: false, allow_nil: true
   mount_uploader :profphoto, ProfilePhotoUploader
 
-  has_many :events
   has_many :attendees
-  
+  has_many :events, through: :attendees
+
   def admin?
-    role == "admin"
+    admin
+  end
+
+  def role?(userrole)
+    role == userrole
   end
 
   def fullname

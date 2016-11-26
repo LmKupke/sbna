@@ -1,6 +1,6 @@
 require "rails_helper"
 
-feature "admin_updates_book", %{
+feature "admin_updates_event", %{
   As an authenticated admin
   I want to update an so that
   So that others can see it
@@ -8,7 +8,7 @@ feature "admin_updates_book", %{
 
   context "as an admin user" do
     before(:each) do
-      admin = create(:user, role: "admin")
+      admin = create(:user, role: "admin", admin: true)
       event = create(:event)
       login_as(admin)
       visit root_path

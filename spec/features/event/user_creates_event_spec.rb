@@ -1,6 +1,6 @@
 require "rails_helper"
 
-feature "admin_creates_book", %{
+feature "admin_creates_event", %{
   As an authenticated admin
   I want to create an event
   So that others can see it
@@ -8,7 +8,7 @@ feature "admin_creates_book", %{
 
   context "as an admin user" do
     before(:each) do
-      admin = create(:user, role: "admin")
+      admin = create(:user, role: "admin", admin: true)
       login_as(admin)
       visit root_path
       visit new_event_path
