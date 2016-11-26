@@ -81,7 +81,7 @@ RSpec.describe User, type: :model do
 
     context "when user is an admin" do
       it 'returns true' do
-        user = create(:user, role: "admin")
+        user = create(:user, role: "admin", admin: true )
         expect(user.admin?).to eq(true)
       end
     end
