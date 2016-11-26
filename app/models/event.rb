@@ -9,9 +9,9 @@ class Event < ActiveRecord::Base
   validates :location, presence: true
   validates :max_participants, presence: true, numericality: { only_integer: true, greater_than: 0 }
 
-  belongs_to :user
   has_many :attendees
-
+  has_many :users, through: :attendees
+  belongs_to :user
   def to_ics
     event = Icalendar::Event.new
     event.dtstart = self.start.strftime("%Y%m%dT%H%M%S")

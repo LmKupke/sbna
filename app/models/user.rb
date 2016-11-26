@@ -12,6 +12,7 @@ class User < ActiveRecord::Base
 
   validates :first_name, presence: true
   validates :last_name, presence: true
+  validates :role, presence: true, inclusion: { in: ["member", "admin"]}
   validates :email,
    presence: true,
    allow_nil: false,
@@ -28,9 +29,9 @@ class User < ActiveRecord::Base
   validates :other_address, presence: false, allow_nil: true
   mount_uploader :profphoto, ProfilePhotoUploader
 
-  has_many :events
   has_many :attendees
-  
+  has_many :events, through: :attendees
+
   def admin?
     role == "admin"
   end
