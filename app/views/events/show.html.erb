@@ -6,7 +6,7 @@
     <div class="card-content col s12 l3">
       <div class="" id="event-show-actions">
         <% if user_signed_in? %>
-          <% if current_user.admin? %>
+          <% if current_user.admin? && current_user.role == "superadmin"%>
           <%= link_to event_path(@event), data: { position: "bottom", delay: "50", tooltip: "Delete Event", confirm: "Are you sure you want to delete this event?" }, method: :delete,  class: "right btn-floating btn-large waves-effect waves-light red darken-4 tooltipped", id: "event-show-delete-button" do %>
               <i class="material-icons">delete</i>
             <% end %>
@@ -32,13 +32,15 @@
 </div>
 <div class="hide-on-med-and-down row">
   <% if user_signed_in? %>
-    <% if @userattending.empty? %>
-        <%= link_to "Register", new_event_attendee_path(@event), class: "col l3 offset-l9 green btn-large event-reg-button"%>
+    <% if DateTime.now < @event.end %>
+      <% if @userattending.empty? %>
+          <%= link_to "Register", new_event_attendee_path(@event), class: "col l3 offset-l9 green btn-large event-reg-button"%>
 
-    <% else %>
-        <%= link_to "Cancel Attendance", "#", class: "right red btn-large" %>
-        <%= link_to "Update Attendace", "#", class: "right green btn-large" %>
-      </div>
+      <% else %>
+          <%= link_to "Cancel Attendance", "#", class: "right red btn-large" %>
+          <%= link_to "Update Attendace", "#", class: "right green btn-large" %>
+        </div>
+      <% end %>
     <% end %>
   <% end %>
 </div>
@@ -51,15 +53,17 @@
     <div class="col s12">
       <div class="center-align">
         <% if user_signed_in? %>
-          <% if @userattending.empty? %>
-            <div>
-              <%= link_to "Register", new_event_attendee_path(@event), class: "green btn" %>
-            </div>
-          <% else %>
-            <div>
-             <%= link_to "Cancel Attendance", "#", class: "red btn" %>
-             <%= link_to "Update", "#", class: "green btn" %>
-            </div>
+          <% if DateTime.now < @event.end %>
+            <% if @userattending.empty? %>
+              <div>
+                <%= link_to "Register", new_event_attendee_path(@event), class: "green btn" %>
+              </div>
+            <% else %>
+              <div>
+               <%= link_to "Cancel Attendance", "#", class: "red btn" %>
+               <%= link_to "Update Attendance", "#", class: "green btn" %>
+              </div>
+            <% end %>
           <% end %>
         <% end %>
       </div>
