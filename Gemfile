@@ -19,6 +19,7 @@ gem 'fog'
 gem 'icalendar'
 gem 'rails_admin', '~> 1.0'
 gem "cancancan"
+gem 'paper_trail'
 
 group :development, :test do
   gem 'capybara'

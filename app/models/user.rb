@@ -31,7 +31,8 @@ class User < ActiveRecord::Base
   mount_uploader :profphoto, ProfilePhotoUploader
 
   has_many :attendees
-  has_many :events, through: :attendees
+  has_many :events
+  has_paper_trail :on => [:update, :destroy]
 
   def admin?
     admin
