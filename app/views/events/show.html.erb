@@ -34,8 +34,7 @@
   <% if user_signed_in? %>
     <% if DateTime.now < @event.end %>
       <% if @userattending.empty? %>
-          <%= link_to "Register", new_event_attendee_path(@event), class: "col l3 offset-l9 green btn-large event-reg-button"%>
-
+          <button data-target="modal1" class="col l3 offset-l9 green btn-large event-reg-button modal-trigger">Register</button>
       <% else %>
           <%= link_to "Cancel Attendance", "#", class: "right red btn-large" %>
           <%= link_to "Update Attendace", "#", class: "right green btn-large" %>
@@ -44,6 +43,37 @@
     <% end %>
   <% end %>
 </div>
+
+
+  <!-- Modal Structure -->
+  <div id="modal1" class="modal modal-fixed-footer">
+    <div class="modal-content">
+      <h4>Register for <%= @event.title  %></h4>
+      <form>
+        <label>Guests</label>
+        <select class="browser-default" id="guestNum">
+          <option value="" disabled selected>Choose your option</option>
+          <option value="0">0</option>
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+          <option value="6">6</option>
+          <option value="7">7</option>
+          <option value="8">8</option>
+          <option value="9">9</option>
+          <option value="10">10</option>
+       </select>
+     </form>
+
+    </div>
+    <div class="modal-footer">
+      <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat ">Register</a>
+      <a href="#!" class="modal-action modal-close waves-effect waves-red btn-flat ">Cancel</a>
+    </div>
+  </div>
+
 
 <%= render "eventshowinfo" %>
 

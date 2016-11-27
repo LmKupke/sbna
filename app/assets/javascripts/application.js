@@ -25,6 +25,7 @@ $(document).ready(function(){
   $('#datetimepicker2').datetimepicker();
   $(".dropdown-button.navside").dropdown({hover: true});
   $(".dropdown-button").dropdown({hover: true});
+  $('.modal-trigger').leanModal();
   $('#calendar').fullCalendar({
     header: {
       left: 'today prev, next',
@@ -53,5 +54,9 @@ $(document).ready(function(){
         return false;
       }
     }
+  });
+  $('#guestNum').change(function(){
+     var selection = $('#guestNum').val();
+     debugger;
   });
 });
