@@ -10,7 +10,8 @@ class Event < ActiveRecord::Base
   validates :max_participants, presence: true, numericality: { only_integer: true, greater_than: 0 }
 
   has_many :attendees
-  has_many :users, through: :attendees
+  has_many :users
+  has_many :guests
   belongs_to :user
   def to_ics
     event = Icalendar::Event.new

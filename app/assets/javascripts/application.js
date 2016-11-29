@@ -55,8 +55,53 @@ $(document).ready(function(){
       }
     }
   });
+
   $('#guestNum').change(function(){
-     var selection = $('#guestNum').val();
-     debugger;
+     var number = parseInt($('#guestNum').val());
+     var $form = document.getElementById("new_attendee");
+     while ($form.hasChildNodes()) {
+       $form.removeChild($form.lastChild);
+     }
+
+    var eventIDpath = window.location.pathname;
+    var eventIDarray = eventIDpath.split("/");
+    var eventID = eventIDarray[3];
+     for (i=0;i<number;i++){
+       var label = document.createTextNode( "Guest " + (i+1) + " Name");
+       $form.appendChild(label);
+       var input = document.createElement("input");
+       input.type = "text";
+       input.name = "guest[guest" + i + "]";
+       $form.appendChild(input);
+     }
+     var $submission = $form.appendChild(document.createElement("input"));
+     $submission.type = "submit";
+     $submission.value = "Register"
+     $submission.name = "commit";
+     $submission.className = "modal-action modal-close waves-effect waves-green btn-flat";
+     var input = document.createElement("input");
+     input.type= "hidden";
+     input.value = eventID;
+     input.name = "event_id";
+     $form.appendChild(input);
+     $submission.on('click',attendeeSubmit(event, eventID));
+     $form.appendChild($submission);
   });
 });
+
+function attendeeSubmit(event,eventID) {
+  event.preventDefault();
+  var request = $.ajax({
+    type: "POST",
+    url: "/api/attendees",
+    dataType: "json"
+  });
+
+  request.fail(function(response){
+    alert(response.responseJSON.message);
+  });
+
+  request.done(function(data) {
+
+  });
+}
