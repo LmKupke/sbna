@@ -65,14 +65,14 @@
         <option value="10">10</option>
      </select>
      <br />
+     <div class="row">
       <%= form_for Attendee.new, url: api_attendees_path, params: @event do |f| %>
 
 
 
       <% end %>
-      </div>
-
     </div>
+  </div>
   </div>
 
 
@@ -87,7 +87,7 @@
           <% if DateTime.now < @event.end %>
             <% if @userattending.empty? %>
               <div>
-                <%= link_to "Register", new_event_attendee_path(@event), class: "green btn" %>
+                <button data-target="modal1" class="green btn modal-trigger">Register</button>
               </div>
             <% else %>
               <div>

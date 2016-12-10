@@ -78,7 +78,7 @@ $(document).ready(function(){
      $submission.type = "submit";
      $submission.value = "Register"
      $submission.name = "commit";
-     $submission.className = "modal-action modal-close waves-effect waves-green btn-flat";
+     $submission.className = "modal-action modal-close green register-button col push-s9 waves-effect waves-green btn-flat";
      var input = document.createElement("input");
      input.type= "hidden";
      input.value = eventID;
