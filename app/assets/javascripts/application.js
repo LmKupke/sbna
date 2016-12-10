@@ -95,20 +95,3 @@ $(document).ready(function(){
      $form.appendChild($submission);
   });
 })
-
-// function attendeeSubmit(event,eventID)
-//   // event.preventDefault();
-//   // var request = $.ajax({
-//   //   type: "POST",
-//   //   url: "/api/attendees",
-//   //   dataType: "json"
-  // });
-
-  // request.fail(function(response){
-  //   alert(response.responseJSON.message);
-  // });
-
-  // request.done(function(data) {
-  //
-  // });
-// }

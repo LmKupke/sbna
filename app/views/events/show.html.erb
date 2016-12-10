@@ -66,15 +66,21 @@
      </select>
      <br />
      <div class="row">
-      <%= form_for Attendee.new, url: api_attendees_path, params: @event do |f| %>
+      <% if @userattending.empty? %>
+        <%= form_for Attendee.new, url: api_attendees_path, params: @event do |f| %>
 
 
 
+        <% end %>
+      <% else %>
+
+        <%= form_for [@userattending,@event], url: api_attendee_path, params: @event do |f| %>
+
+        <% end %>
       <% end %>
     </div>
   </div>
   </div>
-
 
 <%= render "eventshowinfo" %>
 
@@ -92,7 +98,7 @@
             <% else %>
               <div>
                <%= link_to "Cancel Attendance", "#", class: "red btn" %>
-               <%= link_to "Update Attendance", "#", class: "green btn" %>
+               <button data-target="modal1" class="green btn modal-trigger">Update Attendance</button>
               </div>
             <% end %>
           <% end %>

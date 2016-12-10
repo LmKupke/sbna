@@ -21,7 +21,6 @@ class Api::AttendeesController < ApplicationController
   private
 
   def set_event
-    binding.pry
     @event = Event.find(params[:event_id])
     @attendee = Attendee.create(event: @event, user: current_user)
   end
