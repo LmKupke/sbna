@@ -1,6 +1,6 @@
 class Api::AttendeesController < ApplicationController
   skip_before_filter :verify_authenticity_token, :only => :create
-   before_action :set_event
+  before_action :set_event
   def create
     params["guest"].each do |k,v|
       a = Guest.new(user: current_user, event: @event, guest_name: v)
@@ -21,6 +21,7 @@ class Api::AttendeesController < ApplicationController
   private
 
   def set_event
+    binding.pry
     @event = Event.find(params[:event_id])
     @attendee = Attendee.create(event: @event, user: current_user)
   end

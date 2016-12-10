@@ -65,7 +65,7 @@ $(document).ready(function(){
 
     var eventIDpath = window.location.pathname;
     var eventIDarray = eventIDpath.split("/");
-    var eventID = eventIDarray[3];
+    var eventID = eventIDarray[2];
      for (i=0;i<number;i++){
        var label = document.createTextNode( "Guest " + (i+1) + " Name");
        $form.appendChild(label);
@@ -84,24 +84,31 @@ $(document).ready(function(){
      input.value = eventID;
      input.name = "event_id";
      $form.appendChild(input);
-     $submission.on('click',attendeeSubmit(event, eventID));
+     $submission.on('click', function attendeeSubmit(event, eventID) {
+       event.preventDefault();
+       var request = $.ajax({
+         type: "POST",
+         url: "/api/attendees",
+         dataType: "json"
+       });
+     });
      $form.appendChild($submission);
   });
-});
+})
 
-function attendeeSubmit(event,eventID) {
-  event.preventDefault();
-  var request = $.ajax({
-    type: "POST",
-    url: "/api/attendees",
-    dataType: "json"
-  });
+// function attendeeSubmit(event,eventID)
+//   // event.preventDefault();
+//   // var request = $.ajax({
+//   //   type: "POST",
+//   //   url: "/api/attendees",
+//   //   dataType: "json"
+  // });
 
-  request.fail(function(response){
-    alert(response.responseJSON.message);
-  });
+  // request.fail(function(response){
+  //   alert(response.responseJSON.message);
+  // });
 
-  request.done(function(data) {
-
-  });
-}
+  // request.done(function(data) {
+  //
+  // });
+// }
