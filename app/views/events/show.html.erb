@@ -55,9 +55,15 @@
         <div>
           <ul id="new_guest_list">
             <li class="col s12 guest">
-              <%= label_tag(:guest_name, "Guest Name", class:"col s9" )%>
-              <%= text_field_tag(:guest_name, nil, class: "col s9 guest_text") %>
-              <button class="col s3 waves-effect waves-red btn-flat green addGuest" id="addGuest">Add Guest</button>
+              <div class="input-field col s5">
+              <%= label_tag(:guest_fname, "Guest First Name")%>
+              <%= text_field_tag(:guest_fname, nil, class: "guest_firstname") %>
+              </div>
+              <div class="input-field col s5">
+              <%= label_tag(:guest_lname, "Guest Last Name")%>
+              <%= text_field_tag(:guest_lname, nil, class: "guest_lastname") %>
+              </div>
+              <button class="col s2 waves-effect waves-red btn-flat green addGuest" id="addGuest">Add Guest</button>
             </li>
           </ul>
         </div>
@@ -67,16 +73,28 @@
           <div>
             <ul id="new_guest_list">
               <% @guests.each do |guest| %>
-              <li class="col s12 guest">
-                  <%= label_tag(:guest_name, "Guest Name", class: "col s9")%>
-                  <%= text_field_tag :guest, guest.guest_name, class: "col s9 guest_text", id: guest.id %>
-                  <button class="col s3 waves-effect waves-red btn-flat red deleteGuest">Delete Guest</button>
+                <li class="col s12 guest">
+                  <div class="input-field col s5">
+                  <%= label_tag(:guest_fname, "Guest First Name")%>
+                  <%= text_field_tag(:guest_fname, guest.guest_fname, class: "guest_firstname", id: guest.id) %>
+                  </div>
+                  <div class="input-field col s5">
+                  <%= label_tag(:guest_lname, "Guest Last Name")%>
+                  <%= text_field_tag(:guest_lname, guest.guest_lname, class: "guest_lastname", id: guest.id) %>
+                  </div>
+                  <button class="col s2 waves-effect waves-red btn-flat red deleteGuest">Delete Guest</button>
                 </li>
               <% end %>
               <li class="col s12 guest">
-                <%= label_tag(:guest_name, "Guest Name", class:"col s9" )%>
-                <%= text_field_tag(:guest_name, nil, class: "col s9 guest_text") %>
-                <button class="col s3 waves-effect waves-red btn-flat green addGuest" id="addGuest">Add Guest</button>
+                <div class="input-field col s5">
+                <%= label_tag(:guest_fname, "Guest First Name")%>
+                <%= text_field_tag(:guest_fname, nil, class: "guest_firstname") %>
+                </div>
+                <div class="input-field col s5">
+                <%= label_tag(:guest_lname, "Guest Last Name")%>
+                <%= text_field_tag(:guest_lname, nil, class: "guest_lastname") %>
+                </div>
+                <button class="col s2 waves-effect waves-red btn-flat green addGuest" id="addGuest">Add Guest</button>
               </li>
             </ul>
             <br />
