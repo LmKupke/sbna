@@ -1,9 +1,17 @@
 class AttendeesController < ApplicationController
-  def new
-    @attendee = Attendee.new
+  before_action :set_event
+  def index
+    @attendee = Attendee.create(event: @event, user: current_user)
+    redirect_to event_path(@event)
   end
 
-  def create
+  def destroy
 
+  end
+
+  private
+
+  def set_event
+    @event = Event.find(params[:event_id])
   end
 end

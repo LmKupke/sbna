@@ -5,12 +5,13 @@ Rails.application.routes.draw do
   resources :users, only: [:show]
 
   namespace :api do
-    resources :attendees, only: [:create, :update, :destroy]
+    resources :attendees, only: [ :index, :create, :destroy]
     resources :events, only: [:index,:new,:edit,:update]
   end
   resources :events, only: [:index,:show, :new, :create, :edit, :update, :destroy]
   get 'calendar', controller: "events", action: "calendar"
   resources :events, only: [:show] do
     resources :attendees
+    resources :guests
   end
 end

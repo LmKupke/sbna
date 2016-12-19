@@ -34,11 +34,10 @@
   <% if user_signed_in? %>
     <% if DateTime.now < @event.end %>
       <% if @userattending.empty? %>
-          <button data-target="modal1" class="col l3 offset-l9 green btn-large event-reg-button modal-trigger">Register</button>
+          <%=link_to "Register", event_attendees_path(@event) ,class: "col l3 offset-l9 green btn-large event-reg-button" %>
       <% else %>
           <%= link_to "Cancel Attendance", "#", class: "right red btn-large" %>
-          <%= link_to "Update Attendace", "#", class: "right green btn-large" %>
-        </div>
+          <button data-target="modal1" class="right green btn-large modal-trigger">Add Guests</button>
       <% end %>
     <% end %>
   <% end %>
@@ -49,32 +48,39 @@
   <div id="modal1" class="modal modal-fixed-footer">
     <div class="modal-content">
       <h4>Register for <%= @event.title  %></h4>
-      <label for="guestNum">Guests</label>
-      <select class="browser-default" id="guestNum">
-        <option value="" disabled selected>Choose your option</option>
-        <option value="0">0</option>
-        <option value="1">1</option>
-        <option value="2">2</option>
-        <option value="3">3</option>
-        <option value="4">4</option>
-        <option value="5">5</option>
-        <option value="6">6</option>
-        <option value="7">7</option>
-        <option value="8">8</option>
-        <option value="9">9</option>
-        <option value="10">10</option>
-     </select>
+
      <br />
      <div class="row">
-      <% if @userattending.empty? %>
-        <%= form_for Attendee.new, url: api_attendees_path, params: @event do |f| %>
+      <% if @guests.empty? %>
+        <div>
+          <ul id="new_guest_list">
+            <li class="col s12 guest">
+              <%= label_tag(:guest_name, "Guest Name", class:"col s9" )%>
+              <%= text_field_tag(:guest_name, nil, class: "col s9 guest_text") %>
+              <button class="col s3 waves-effect waves-red btn-flat green addGuest" id="addGuest">Add Guest</button>
+            </li>
+          </ul>
+        </div>
 
-
-
-        <% end %>
       <% else %>
-
-        <%= form_for [@userattending,@event], url: api_attendee_path, params: @event do |f| %>
+        <% if @guests != nil %>
+          <div>
+            <ul id="new_guest_list">
+              <% @guests.each do |guest| %>
+              <li class="col s12 guest">
+                  <%= label_tag(:guest_name, "Guest Name", class: "col s9")%>
+                  <%= text_field_tag :guest, guest.guest_name, class: "col s9 guest_text", id: guest.id %>
+                  <button class="col s3 waves-effect waves-red btn-flat red deleteGuest">Delete Guest</button>
+                </li>
+              <% end %>
+              <li class="col s12 guest">
+                <%= label_tag(:guest_name, "Guest Name", class:"col s9" )%>
+                <%= text_field_tag(:guest_name, nil, class: "col s9 guest_text") %>
+                <button class="col s3 waves-effect waves-red btn-flat green addGuest" id="addGuest">Add Guest</button>
+              </li>
+            </ul>
+            <br />
+        </div>
 
         <% end %>
       <% end %>
@@ -93,12 +99,12 @@
           <% if DateTime.now < @event.end %>
             <% if @userattending.empty? %>
               <div>
-                <button data-target="modal1" class="green btn modal-trigger">Register</button>
+                <%= link_to "Register", event_attendees_path(@event) ,class: "green btn modal-trigger" %>
               </div>
             <% else %>
               <div>
                <%= link_to "Cancel Attendance", "#", class: "red btn" %>
-               <button data-target="modal1" class="green btn modal-trigger">Update Attendance</button>
+               <button data-target="modal1" class="green btn modal-trigger">Add Guests</button>
               </div>
             <% end %>
           <% end %>

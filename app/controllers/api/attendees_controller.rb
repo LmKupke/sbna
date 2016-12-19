@@ -1,28 +1,32 @@
 class Api::AttendeesController < ApplicationController
-  skip_before_filter :verify_authenticity_token, :only => :create
+  skip_before_filter :verify_authenticity_token, only: [:index]
   before_action :set_event
-  def create
-    params["guest"].each do |k,v|
-      a = Guest.new(user: current_user, event: @event, guest_name: v)
-      if a.save
-        flash[:success] = "Your guest #{a.guest_name} is now added to the event!"
-      else
-        flash[:fail] = "Your guest #{a.guest_name} was not saved to the event!"
-      end
-    end
 
-    redirect_to event_path(@event)
+  def create
+    if params["guest"] != nil
+      @guest = params["guest"]
+      @a = Guest.create(user: current_user, event: @event, guest_name: @guest["guest"])
+      if @a
+        flash[:success] = "Your guest #{@guest["guest"]} is now added to the event!"
+      else
+        flash[:fail] = "Your guest #{@guest["guest"]} was not saved to the event!"
+      end
+
+      render json: @a
+    end
   end
 
-  def update
-
+  def destroy
+    @guest = Guest.find(params[:guest_id])
+    @guest.destroy
+    @guests = Guest.where(event: @event, user: current_user)
+    render json: @guests
   end
 
   private
 
   def set_event
     @event = Event.find(params[:event_id])
-    @attendee = Attendee.create(event: @event, user: current_user)
   end
 
 
