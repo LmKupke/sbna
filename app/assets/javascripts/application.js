@@ -64,7 +64,7 @@ $(document).ready(function(){
     var eventIDarray = eventIDpath.split("/");
     var eventID = eventIDarray[2];
     var $count = document.getElementsByClassName("col s9 guest_text");
-    if($count.length < 10) {
+    if($count.length < 7) {
       var $countDuplicate = [];
       var $countValues = [];
       for(var i = 0; i < $count.length; i++){
@@ -125,7 +125,7 @@ $(document).ready(function(){
       })
 
     } else {
-      Materialize.toast("Sorry you can only have 10 guests", 4000, "red");
+      Materialize.toast("Sorry you can only have 6 guests", 4000, "red");
     }
   });
 
@@ -147,6 +147,8 @@ $(document).ready(function(){
     })
     request.done(function(data) {
       a.remove();
+      Materialize.toast("Your guest " + guest_name + " has now been removed from the event.", 4000, "green");
+
     })
   });
 

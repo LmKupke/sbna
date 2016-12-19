@@ -36,7 +36,7 @@
       <% if @userattending.empty? %>
           <%=link_to "Register", event_attendees_path(@event) ,class: "col l3 offset-l9 green btn-large event-reg-button" %>
       <% else %>
-          <%= link_to "Cancel Attendance", "#", class: "right red btn-large" %>
+          <%= link_to "Cancel Attendance", event_attendee_path(@event,current_user), method: :delete, class: "right red btn-large" %>
           <button data-target="modal1" class="right green btn-large modal-trigger">Add Guests</button>
       <% end %>
     <% end %>
@@ -47,7 +47,7 @@
   <!-- Modal Structure -->
   <div id="modal1" class="modal modal-fixed-footer">
     <div class="modal-content">
-      <h4>Register for <%= @event.title  %></h4>
+      <h4 class="center-align">Guests</h4>
 
      <br />
      <div class="row">
@@ -103,7 +103,7 @@
               </div>
             <% else %>
               <div>
-               <%= link_to "Cancel Attendance", "#", class: "red btn" %>
+               <%= link_to "Cancel Attendance", event_attendee_path(@event,current_user), method: :delete, class: "red btn" %>
                <button data-target="modal1" class="green btn modal-trigger">Add Guests</button>
               </div>
             <% end %>

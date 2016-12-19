@@ -6,7 +6,12 @@ class AttendeesController < ApplicationController
   end
 
   def destroy
-
+    @attendee = Attendee.where(event: @event, user: current_user)
+    @guests = Guest.where(event: @event, user: current_user)
+    @guests.destroy_all
+    @attendee.destroy_all
+    flash[:success] = "You have unregistered for the event and any guests that you registered."
+    redirect_to event_path(@event)
   end
 
   private
