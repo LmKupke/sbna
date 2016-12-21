@@ -25,6 +25,7 @@ $(document).ready(function(){
   $('#datetimepicker2').datetimepicker();
   $(".dropdown-button.navside").dropdown({hover: true});
   $(".dropdown-button").dropdown({hover: true});
+  $('.modal-trigger').leanModal();
   $('#calendar').fullCalendar({
     header: {
       left: 'today prev, next',
@@ -54,4 +55,132 @@ $(document).ready(function(){
       }
     }
   });
-});
+
+
+  $(document).on("click", "#addGuest" ,function(event){
+    event.preventDefault();
+
+    var eventIDpath = window.location.pathname;
+    var eventIDarray = eventIDpath.split("/");
+    var eventID = eventIDarray[eventIDarray.length - 1];
+    var $count = document.getElementsByClassName("col s12 guest");
+    if($count.length < 7) {
+      var $countDuplicate = [];
+      var $countValues = [];
+      for(var i = 0; i < $count.length; i++){
+        var $inputchildren = $count[i].children
+        if($inputchildren[0].lastElementChild.value === "" || $inputchildren[1].lastElementChild.value === ""){
+            Materialize.toast("Please enter a guest's first and last name", 4000, "red")
+            return;
+        }
+        $countValues.push($inputchildren[0].lastElementChild.value + "  " + $inputchildren[1].lastElementChild.value)
+      }
+      var $countSorted = $countValues.sort();
+      for (var i = 0; i < $countSorted.length - 1; i++) {
+        if ($countSorted[i + 1] == $countSorted[i]) {
+          Materialize.toast("Sorry you have duplicate values", 4000, "red");
+          return;
+        }
+      }
+      var a = event.target.parentNode;
+      var guest_firstname = a.getElementsByClassName("guest_firstname")[0]
+      var guest_firstnameValue = guest_firstname.value
+      var guest_lastname = a.getElementsByClassName("guest_lastname")[0]
+      var guest_lastnameValue = guest_lastname.value
+      var request = $.ajax({
+        type: "POST",
+        url: "/api/attendees",
+        data: { event_id: eventID, guest: {first_name: guest_firstnameValue, last_name: guest_lastnameValue } },
+        dataType: "json"
+      });
+
+      request.success(function(data) {
+        event.target.className = "col s2 waves-effect waves-red btn-flat red deleteGuest";
+        event.target.innerHTML = "Delete Guest";
+        event.target.id = ""
+        guest_lastname.id = data.id
+        guest_firstname.id = data.id
+
+
+        var $li = document.createElement("li");
+        $li.className = "col s12 guest";
+
+        var $divFname = document.createElement("div");
+        $divFname.className = "input-field col s5";
+        var $labelFname = document.createElement("label");
+        $labelFname.innerHTML = "Guest First Name";
+        var $inputFname = document.createElement("input");
+        $inputFname.type = "text";
+        $inputFname.className = "guest_firstname";
+
+        $divFname.appendChild($labelFname);
+        $divFname.appendChild($inputFname);
+
+        var $divLname = document.createElement("div");
+        $divLname.className = "input-field col s5";
+        var $labelLname = document.createElement("label");
+        $labelLname.innerHTML = "Guest Last Name";
+        var $inputLname = document.createElement("input");
+        $inputLname.type = "text";
+        $inputLname.className = "guest_lastname";
+
+        $divLname.appendChild($labelLname);
+        $divLname.appendChild($inputLname);
+
+        var $button = document.createElement("button");
+        $button.className = "col s2 waves-effect waves-green btn-flat green addGuest";
+        $button.innerHTML = "Add Guest";
+        $button.id = "addGuest"
+        var $ul = document.getElementById("new_guest_list");
+
+
+
+
+        $li.appendChild($divFname);
+        $li.appendChild($divLname);
+        $li.appendChild($button);
+        $ul.appendChild($li);
+        Materialize.toast("Your guest, " + guest_firstnameValue + " " + guest_lastnameValue + ", is now added to the event!", 4000, "green");
+      })
+
+      request.error(function(data) {
+        Materialize.toast("Your guest, " + guest_firstnameValue + " " + guest_lastnameValue +  ", was not saved to the event. " + guest_firstnameValue + " " + guest_lastnameValue + data.responseJSON.error, 4000, "red");
+      })
+
+    } else {
+      Materialize.toast("Sorry you can only have 6 guests", 4000, "red");
+    }
+  });
+
+  $(document).on("click",".deleteGuest",function(event){
+    event.preventDefault;
+    var a = event.target.parentNode;
+
+    var guest_firstname = a.getElementsByClassName("guest_firstname")[0];
+    var guest_firstnameValue = guest_firstname.value;
+    var guest_firstnameID = guest_firstname.id;
+
+
+    var guest_lastname = a.getElementsByClassName("guest_lastname")[0];
+    var guest_lastnameValue = guest_lastname.value;
+    var guest_lastnameID = guest_lastname.id;
+    var eventIDpath = window.location.pathname;
+    var eventIDarray = eventIDpath.split("/");
+    var eventID = eventIDarray[eventIDarray.length - 1];
+    var request = $.ajax({
+      type: "DELETE",
+      url: "/api/attendees/" + eventID,
+      data: {guest: { first_name: guest_firstnameValue, last_name: guest_lastnameValue, first_nameid: guest_firstnameID, last_nameid: guest_lastnameID  }, event_id: eventID}
+    })
+    request.done(function(data) {
+      a.remove();
+      Materialize.toast("Your guest, " + guest_firstnameValue + " " + guest_lastnameValue + ", has now been removed from the event.", 4000, "green");
+
+    })
+  });
+
+
+
+
+
+})

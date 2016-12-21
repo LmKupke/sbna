@@ -1,9 +1,22 @@
 class AttendeesController < ApplicationController
-  def new
-    @attendee = Attendee.new
+  before_action :set_event
+  def index
+    @attendee = Attendee.create(event: @event, user: current_user)
+    redirect_to event_path(@event)
   end
 
-  def create
+  def destroy
+    @attendee = Attendee.where(event: @event, user: current_user)
+    @guests = Guest.where(event: @event, user: current_user)
+    @guests.destroy_all
+    @attendee.destroy_all
+    flash[:success] = "You have unregistered for the event and any guests that you registered."
+    redirect_to event_path(@event)
+  end
 
+  private
+
+  def set_event
+    @event = Event.find(params[:event_id])
   end
 end

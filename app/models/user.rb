@@ -30,9 +30,9 @@ class User < ActiveRecord::Base
   validates :other_address, presence: false, allow_nil: true
   mount_uploader :profphoto, ProfilePhotoUploader
 
-  has_many :attendees
-  has_many :events, through: :attendees
-
+  has_many :attendances, class_name: "Attendee", foreign_key: "user_id"
+  has_many :events
+  has_many :guests
   def admin?
     admin
   end
