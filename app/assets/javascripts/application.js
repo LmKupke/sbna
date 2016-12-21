@@ -62,7 +62,7 @@ $(document).ready(function(){
 
     var eventIDpath = window.location.pathname;
     var eventIDarray = eventIDpath.split("/");
-    var eventID = eventIDarray[2];
+    var eventID = eventIDarray[eventIDarray.length - 1];
     var $count = document.getElementsByClassName("col s12 guest");
     if($count.length < 7) {
       var $countDuplicate = [];
@@ -144,7 +144,8 @@ $(document).ready(function(){
       })
 
       request.error(function(data) {
-        Materialize.toast("Your guest, " + guest_firstnameValue + " " + guest_lastnameValue +  ", was not saved to the event!", 4000, "red");
+        debugger;
+        Materialize.toast("Your guest, " + guest_firstnameValue + " " + guest_lastnameValue +  ", was not saved to the event. " + guest_firstnameValue + " " + guest_lastnameValue + data.responseJSON.error, 4000, "red");
       })
 
     } else {
@@ -166,7 +167,7 @@ $(document).ready(function(){
     var guest_lastnameID = guest_lastname.id;
     var eventIDpath = window.location.pathname;
     var eventIDarray = eventIDpath.split("/");
-    var eventID = eventIDarray[2];
+    var eventID = eventIDarray[eventIDarray.length - 1];
     var request = $.ajax({
       type: "DELETE",
       url: "/api/attendees/" + eventID,

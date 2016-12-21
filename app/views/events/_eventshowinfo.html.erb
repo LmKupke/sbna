@@ -11,7 +11,7 @@
           <ul>
             <li><strong><%= @event.start.strftime('%a, %b %d, %Y, %I:%M%p') %></strong></li>
             <li><strong><%= @event.end.strftime('%a, %b %d, %Y, %I:%M%p') %></strong></li>
-            <li><%= link_to("Download to ICal", :controller => 'events', :action => :show, :format => :ics) %></li>
+            <li><%= link_to("Download to iCal", :controller => 'events', :action => :show, :format => :ics) %></li>
           </ul>
         </div>
         <div class="location">

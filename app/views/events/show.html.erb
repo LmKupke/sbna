@@ -75,24 +75,24 @@
               <% @guests.each do |guest| %>
                 <li class="col s12 guest">
                   <div class="input-field col s5">
-                  <%= label_tag(:guest_fname, "Guest First Name")%>
-                  <%= text_field_tag(:guest_fname, guest.guest_fname, class: "guest_firstname", id: guest.id) %>
+                    <%= label_tag(:guest_fname, "Guest First Name")%>
+                    <%= text_field_tag(:guest_fname, guest.guest_fname, class: "guest_firstname", id: guest.id) %>
                   </div>
                   <div class="input-field col s5">
-                  <%= label_tag(:guest_lname, "Guest Last Name")%>
-                  <%= text_field_tag(:guest_lname, guest.guest_lname, class: "guest_lastname", id: guest.id) %>
+                    <%= label_tag(:guest_lname, "Guest Last Name")%>
+                    <%= text_field_tag(:guest_lname, guest.guest_lname, class: "guest_lastname", id: guest.id) %>
                   </div>
                   <button class="col s2 waves-effect waves-red btn-flat red deleteGuest">Delete Guest</button>
                 </li>
               <% end %>
               <li class="col s12 guest">
                 <div class="input-field col s5">
-                <%= label_tag(:guest_fname, "Guest First Name")%>
-                <%= text_field_tag(:guest_fname, nil, class: "guest_firstname") %>
+                  <%= label_tag(:guest_fname, "Guest First Name")%>
+                  <%= text_field_tag(:guest_fname, nil, class: "guest_firstname") %>
                 </div>
                 <div class="input-field col s5">
-                <%= label_tag(:guest_lname, "Guest Last Name")%>
-                <%= text_field_tag(:guest_lname, nil, class: "guest_lastname") %>
+                  <%= label_tag(:guest_lname, "Guest Last Name")%>
+                  <%= text_field_tag(:guest_lname, nil, class: "guest_lastname") %>
                 </div>
                 <button class="col s2 waves-effect waves-red btn-flat green addGuest" id="addGuest">Add Guest</button>
               </li>
