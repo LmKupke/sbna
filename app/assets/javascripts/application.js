@@ -100,7 +100,8 @@ $(document).ready(function(){
         event.target.id = ""
         guest_lastname.id = data.id
         guest_firstname.id = data.id
-
+        var availability = document.getElementById("spots");
+        availability.innerHTML = parseInt(availability.innerHTML - 1)
 
         var $li = document.createElement("li");
         $li.className = "col s12 guest";
@@ -144,7 +145,7 @@ $(document).ready(function(){
       })
 
       request.error(function(data) {
-        Materialize.toast("Your guest, " + guest_firstnameValue + " " + guest_lastnameValue +  ", was not saved to the event. " + guest_firstnameValue + " " + guest_lastnameValue + data.responseJSON.error, 4000, "red");
+        Materialize.toast(data.responseJSON.error, 4000, "red");
       })
 
     } else {
@@ -160,7 +161,7 @@ $(document).ready(function(){
     var guest_firstnameValue = guest_firstname.value;
     var guest_firstnameID = guest_firstname.id;
 
-
+    var availability = document.getElementById("spots");
     var guest_lastname = a.getElementsByClassName("guest_lastname")[0];
     var guest_lastnameValue = guest_lastname.value;
     var guest_lastnameID = guest_lastname.id;
@@ -175,7 +176,7 @@ $(document).ready(function(){
     request.done(function(data) {
       a.remove();
       Materialize.toast("Your guest, " + guest_firstnameValue + " " + guest_lastnameValue + ", has now been removed from the event.", 4000, "green");
-
+      availability.innerHTML = parseInt(availability.innerHTML + 1)
     })
   });
 
