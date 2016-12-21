@@ -22,15 +22,15 @@
       <a class="collapsible-header navside">About<i class="material-icons right">arrow_drop_down</i></a>
       <div class="collapsible-body">
         <ul>
-          <li><a href="#" class="navside drop">Board</a></li>
-          <li><a href="#" class="navside drop">Committees</a></li>
-          <li><a href="#" class="navside drop">Meeting Minutes</a></li>
+          <li><%= link_to("Board", board_path, class: "navside drop") %></li>
+          <li><%= link_to("Committees", committee_path, class: "navside drop") %></li>
+          <li><%= link_to("Meeting Minutes", meeting_minutes_path, class: "navside drop") %></li>
         </ul>
       </div>
     </li>
   </ul>
 </li>
-  <li><a class="navside" href="#">Contact</a></li>
+  <li><%= link_to("Contact", contact_path, class: "navside") %></li>
   <% if user_signed_in? %>
     <li><%= link_to("Sign Out", destroy_user_session_path, method: :delete,
       class: "navside") %>

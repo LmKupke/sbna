@@ -176,7 +176,7 @@ $(document).ready(function(){
     request.done(function(data) {
       a.remove();
       Materialize.toast("Your guest, " + guest_firstnameValue + " " + guest_lastnameValue + ", has now been removed from the event.", 4000, "green");
-      availability.innerHTML = parseInt(availability.innerHTML + 1)
+      availability.innerHTML = parseInt(availability.innerHTML) + 1
     })
   });
 
