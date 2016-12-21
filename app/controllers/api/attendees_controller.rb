@@ -9,22 +9,24 @@ class Api::AttendeesController < ApplicationController
       @guest_lname = @guest["last_name"]
       @alreadyinvitedguest = Guest.where(event: @event, guest_fname: @guest_fname, guest_lname: @guest_lname)
       if !@alreadyinvitedguest.empty?
-        @error = " is already invited!"
+        @error = "Your guest, #{@guest_fname} #{@guest_lname}, was not saved to the event. #{@guest_fname} #{@guest_lname} is already invited!"
       end
+
 
       @existingUser = User.where(first_name: @guest_fname, last_name: @guest_lname)
       if !@existingUser.empty?
-        @error = " is a user! Let them know about the event"
+        @error = "Your guest, #{@guest_fname} #{@guest_lname}, was not saved to the event. #{@guest_fname} #{@guest_lname} is a member! Let them know about the event."
       end
 
       if !@alreadyinvitedguest.empty? || !@existingUser.empty?
         render json: { error: @error }, status: 400
       else
-        @a = Guest.create(user: current_user, event: @event, guest_fname: @guest_fname, guest_lname: @guest_lname)
-        if @a
+        @a = Guest.new(user: current_user, event: @event, guest_fname: @guest_fname, guest_lname: @guest_lname)
+        if @a.save
           flash[:success] = "Your guest, #{@guest_fname} #{@guest_lname}, is now added to the event!"
+          render json: @a
         else
-          flash[:fail] = "Your guest, #{@guest_fname} #{@guest_lname}, was not saved to the event!"
+          render json: { error: @a.errors.full_messages }, status: 400
         end
       end
     end

@@ -20,7 +20,7 @@
         </div>
         <div class="availabilty">
           <h5 class="event-date-month-card">Availabilty</h5>
-          Blank spots left of <%= @event.max_participants %>
+          <span id="spots"><%= @event.max_participants - (@event.participants.length + @event.guests.length) %></span>
         </div>
         <div class="price">
           <h5 class="event-date-month-card">Price</h5>
