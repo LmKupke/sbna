@@ -144,7 +144,6 @@ $(document).ready(function(){
       })
 
       request.error(function(data) {
-        debugger;
         Materialize.toast("Your guest, " + guest_firstnameValue + " " + guest_lastnameValue +  ", was not saved to the event. " + guest_firstnameValue + " " + guest_lastnameValue + data.responseJSON.error, 4000, "red");
       })
 

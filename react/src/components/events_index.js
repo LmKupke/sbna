@@ -6,7 +6,7 @@ import { Link } from 'react-router';
 class EventsIndex extends Component {
   componentWillMount() {
     this.props.fetchEventsHome();
-    debugger;
+
   }
   renderEvents() {
     return this.props.events.map((event) => {
