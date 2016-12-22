@@ -26,6 +26,9 @@ $(document).ready(function(){
   $(".dropdown-button.navside").dropdown({hover: true});
   $(".dropdown-button").dropdown({hover: true});
   $('.modal-trigger').leanModal();
+  $('.collapsible').collapsible();
+
+
   $('#calendar').fullCalendar({
     header: {
       left: 'today prev, next',
