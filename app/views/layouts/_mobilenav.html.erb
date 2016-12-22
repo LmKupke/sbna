@@ -3,20 +3,8 @@
     <li><%= link_to "Profile", user_path(current_user), class: "navside" %></li>
   <% end %>
   <li><%= link_to "SBNA", root_path, class: "navside"  %></li>
+  <li><%= link_to("Event Calendar",calendar_path, class: "navside") %></li>
   <li class="no-padding">
-   <ul class="collapsible collapsible-accordion">
-     <li>
-       <a class="collapsible-header navside">Events<i class="material-icons right">arrow_drop_down</i></a>
-       <div class="collapsible-body">
-         <ul>
-           <li><%= link_to("Upcoming", events_path, class: "navside drop") %></li>
-           <li><%= link_to("Calendar", calendar_path, class: "navside drop") %></li>
-         </ul>
-       </div>
-     </li>
-   </ul>
- </li>
- <li class="no-padding">
   <ul class="collapsible collapsible-accordion">
     <li>
       <a class="collapsible-header navside">About<i class="material-icons right">arrow_drop_down</i></a>
