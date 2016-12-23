@@ -1,7 +1,7 @@
 <div class="row">
-  <div class="col s12">
+  <div class="col s12 usershow">
     <div class="col s3 infocolumn">
-      <%= image_tag(@user_info.profphoto, size: "200") %>
+      <%= image_tag(@user_info.profphoto, class: "col s12 show-image") %>
       <ul class="col s12 userdata">
         <li class="col s5">Name:</li>
         <li class="col s7"> <%= @user_info.fullname %></li>
@@ -31,7 +31,27 @@
       <div>
         <h5 class="center-align">Past Events Attended</h5>
       </div>
-
+      <table class="highlight responsive-table" t>
+        <thead>
+          <tr>
+              <th data-field="title">Event</th>
+              <th data-field="Start">Start</th>
+              <th data-field="End">End</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% if !@pastEventsAttended.empty? %>
+            <% @pastEventsAttended.each do |event| %>
+              <tr>
+                <td><%= link_to event.title, event_path(event) %></td>
+                <td><%= event.start.strftime("%D %r") %></td>
+                <td><%= event.end.strftime("%D %r") %></td>
+              </tr>
+            <% end %>
+          <% end %>
+      </tbody>
+    </table>
+        <%= paginate @pastEventsAttended %>
     </div>
 </div>
 </div>
