@@ -423,6 +423,7 @@ DEPENDENCIES
   fullcalendar-rails
   icalendar
   jquery-rails
+  kaminari
   launchy
   materialize-sass
   momentjs-rails
@@ -444,4 +445,4 @@ RUBY VERSION
    ruby 2.2.3p173
 
 BUNDLED WITH
-   1.13.2
+   1.13.6

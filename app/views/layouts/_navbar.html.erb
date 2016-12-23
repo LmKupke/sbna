@@ -4,18 +4,14 @@
     <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
     <ul class="center hide-on-med-and-down">
       <li><%= link_to("SBNA", root_path) %></li>
-      <li><a href="#" class="dropdown-button" href="#!" data-activates="dropdown3">Events<i class="material-icons right">arrow_drop_down</i></a></li>
-        <ul id="dropdown3" class="dropdown-content">
-          <li class="topnav-drop"><%= link_to("Upcoming Events", events_path) %></li>
-          <li class="topnav-drop"><%= link_to("Calendar",calendar_path) %></li>
-        </ul>
+      <li><%= link_to("Event Calendar",calendar_path) %></li>
       <li><a href="#" class="dropdown-button" href="#!" data-activates="dropdown1">About<i class="material-icons right">arrow_drop_down</i></a></li>
         <ul id="dropdown1" class="dropdown-content">
-          <li class="topnav-drop"><a href="#">Board</a></li>
-          <li class="topnav-drop"><a href="#">Committees</a></li>
-          <li class="topnav-drop"><a href="#">Meeting Minutes</a></li>
+          <li class="topnav-drop"><%= link_to("Board", board_path) %></li>
+          <li class="topnav-drop"><%= link_to("Committees", committee_path) %></li>
+          <li class="topnav-drop"><%= link_to("Meeting Minutes", meeting_minutes_path) %></li>
         </ul>
-      <li><a href="#">Contact</a></li>
+      <li><%= link_to("Contact", contact_path) %></li>
       <% if !user_signed_in? %>
         <li><%= link_to "Join The SBNA", new_user_registration_path %></li>
       <% end %>

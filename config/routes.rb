@@ -14,4 +14,10 @@ Rails.application.routes.draw do
     resources :attendees
     resources :guests
   end
+  get "static_pages/board", as: "board", path: "board"
+  get "static_pages/committees", as: "committee", path: "committees"
+  get "static_pages/contact", as: "contact", path: "contact"
+  get "static_pages/meeting_minutes", as: "meeting_minutes", path: "meeting_minutes"
+
+
 end
