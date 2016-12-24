@@ -4,7 +4,7 @@ div.col.s3.infocolumn{
   background-color: #922429;
   ul.userdata {
     padding: 0px;
-
+    color: white
   }
 }
 
@@ -14,7 +14,13 @@ div.col.s3.infocolumn{
 img.col.s12.show-image {
   padding: 0px;
 }
-div.col.s12.usershow {
+div.eventdata {
   padding: 0px;
   background-color: lightgray;
+  height: 100%;
+}
+html, body { height: 100%; overflow: auto;  }
+div.row.ushershow {
+  background-color: lightgrey;
+  height: 100vh;
 }
