@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161219210242) do
+ActiveRecord::Schema.define(version: 20161224172302) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -51,6 +51,7 @@ ActiveRecord::Schema.define(version: 20161219210242) do
     t.string   "color"
     t.string   "picture"
     t.integer  "max_participants"
+    t.float    "price",            default: 0.0,   null: false
   end
 
   create_table "guests", force: :cascade do |t|

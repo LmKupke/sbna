@@ -13,6 +13,7 @@
         <%= f.text_field :location, placeholder: "Please write a full address!" %>
       </div>
 
+
       <div class="input-field">
         <%= f.label :description %><br /><br />
         <%= f.text_area :description %>
@@ -47,7 +48,10 @@
           <input class="file-path validate" type="text">
         </div>
       </div>
-
+      <div class="input-field col s6">
+        <%= f.label :price %><br />
+        <%= f.text_field :price %>
+      </div>
       <div class="actions col s12">
         <%= f.submit @value, class: "btn right" %>
       </div>

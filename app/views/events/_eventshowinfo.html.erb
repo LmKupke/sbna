@@ -24,7 +24,11 @@
         </div>
         <div class="price">
           <h5 class="event-date-month-card">Price</h5>
-          Price variable logic
+          <% if @event.price == 0 %>
+            Free
+          <% else %>
+            $<%= @event.price %>
+          <% end %>
         </div>
       </div>
     </div>

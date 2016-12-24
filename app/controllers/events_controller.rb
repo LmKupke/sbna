@@ -50,7 +50,6 @@ class EventsController < ApplicationController
       redirect_to event_path(@event.id)
     else
       flash[:multiple_error] =  @event.errors.full_messages
-      # flash[:alert] = "Date can not be in the past. If event is today start time can not be in the past"
       redirect_to new_event_path
     end
   end
@@ -107,6 +106,6 @@ class EventsController < ApplicationController
   private
 
   def event_params
-    params.require(:event).permit(:title, :location, :description, :start, :end, :color, :picture, :max_participants)
+    params.require(:event).permit(:title, :location, :description, :start, :end, :color, :picture, :max_participants, :price)
   end
 end

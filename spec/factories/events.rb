@@ -8,6 +8,7 @@ FactoryGirl.define do
     allDay false
     color "Green"
     max_participants 20
+    price 20
     picture do
       File.open(File.join("#{Rails.root}/spec/support/images/photo.jpg"))
     end

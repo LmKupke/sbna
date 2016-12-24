@@ -8,7 +8,7 @@ class Event < ActiveRecord::Base
   validates :end, presence: true,  date: { after_or_equal_to:  :start}
   validates :location, presence: true
   validates :max_participants, presence: true, numericality: { only_integer: true, greater_than: 0 }
-
+  validates :price, presence: true, numericality: { greater_than_or_equal_to: 0}, format: { :with => /\A\d+(?:\.\d{0,2})?\z/ }
   belongs_to :user
   alias_attribute :organizer, :user
   has_many :users, through: :attendees
