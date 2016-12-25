@@ -1,5 +1,5 @@
 class Guest < ActiveRecord::Base
-  validates :user_id, presence: true
+  validates :attendee_id, presence: true
   validates :event_id, presence: true
   validates :guest_fname, presence: true
   validates :guest_lname, presence: true
@@ -8,6 +8,7 @@ class Guest < ActiveRecord::Base
   belongs_to :event
   belongs_to :user
   belongs_to :attendee
+
 
   def eventavailabilty?
     if self.event.participants.length + self.event.guests.length + 1 > self.event.max_participants

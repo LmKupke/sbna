@@ -21,7 +21,8 @@ class Api::AttendeesController < ApplicationController
       if !@alreadyinvitedguest.empty? || !@existingUser.empty?
         render json: { error: @error }, status: 400
       else
-        @a = Guest.new(user: current_user, event: @event, guest_fname: @guest_fname, guest_lname: @guest_lname)
+        @attendee = Attendee.find_by(event: @event, user: current_user)
+        @a = Guest.new(attendee: @attendee, event: @event, guest_fname: @guest_fname, guest_lname: @guest_lname)
         if @a.save
           flash[:success] = "Your guest, #{@guest_fname} #{@guest_lname}, is now added to the event!"
           render json: @a

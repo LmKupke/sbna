@@ -10,7 +10,7 @@ class EventsController < ApplicationController
   def show
     @event = Event.find(params["id"])
     @userattending = Attendee.where(event_id: @event, user_id: current_user)
-    @guests = Guest.where(event_id: @event, user_id: current_user)
+    @guests = Guest.where(event_id: @event, attendee_id: @userattending)
 
     @showfooter = true
     if @userattending.empty? || @guests.empty?

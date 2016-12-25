@@ -9,12 +9,15 @@ class Event < ActiveRecord::Base
   validates :location, presence: true
   validates :max_participants, presence: true, numericality: { only_integer: true, greater_than: 0 }
   validates :price, presence: true, numericality: { greater_than_or_equal_to: 0}, format: { :with => /\A\d+(?:\.\d{0,2})?\z/ }
+
   belongs_to :user
   alias_attribute :organizer, :user
+  has_many :attendees, dependent: :destroy
   has_many :users, through: :attendees
   alias_attribute :participants, :users
-  has_many :attendees
+
   has_many :guests
+  has_many :guests, through: :attendees
   def to_ics
     event = Icalendar::Event.new
     event.dtstart = self.start.strftime("%Y%m%dT%H%M%S")
