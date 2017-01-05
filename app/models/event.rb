@@ -18,6 +18,8 @@ class Event < ActiveRecord::Base
 
   has_many :guests
   has_many :guests, through: :attendees
+
+  
   def to_ics
     event = Icalendar::Event.new
     event.dtstart = self.start.strftime("%Y%m%dT%H%M%S")
