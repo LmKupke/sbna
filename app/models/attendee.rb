@@ -5,7 +5,7 @@ class Attendee < ActiveRecord::Base
 
   belongs_to :user
   belongs_to :event
-  has_many :guests
+  has_many :guests, dependent: :destroy
 
   def eventavailabilty?
 

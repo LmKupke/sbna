@@ -32,7 +32,7 @@ class User < ActiveRecord::Base
 
   has_many :attendances, class_name: "Attendee", foreign_key: "user_id"
   has_many :events
-  has_many :guests
+  has_many :guests, through: :attendances
   def admin?
     admin
   end

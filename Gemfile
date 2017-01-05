@@ -20,6 +20,8 @@ gem 'icalendar'
 gem 'rails_admin', '~> 1.0'
 gem "cancancan"
 gem 'kaminari'
+
+
 group :development, :test do
   gem 'capybara'
   gem 'factory_girl_rails'
